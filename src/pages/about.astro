@@ -1,0 +1,108 @@
+---
+import { social } from "@/constants/social";
+import Layout from "@/layouts/Layout.astro";
+import Animate from "@/components/svelte/Animate.svelte";
+import { Image } from "astro:assets";
+import { educations } from "@/data/education";
+import { organizations } from "@/data/organization";
+---
+
+<title>About | Hamdanu</title>
+
+<Layout>
+  <section class="my-5 md:h-64 h-fit">
+    <div class="flex gap-5 h-full">
+      <Animate client:load className="flex gap-5 h-full w-full" delay={300}>
+        <div
+          class="text-primary-100 bg-primary-300 rounded border border-primary-200 hover:border-secondary-200 p-7 flex flex-col w-full h-full"
+        >
+          <h1 class="lg:text-400 text-300 font-bold">About me</h1>
+          <p class="opacity-50 lg:text-150 text-100">
+            I'm a Software Developer based in <b>Indonesia</b> who mostly works with <b>Typescript, Go, and PHP,</b>
+            beside doing web I learn about low level stuffs with <b>C</b> (god's) programming language. I can talk about
+            technical stuffs, anime, games, and other nerdy stuffs, I'm currently a student on <b
+              >State Polytechnic of Malang,</b
+            >
+            feel free to reach me out.
+          </p>
+
+          <div class="flex gap-2.5 mt-5">
+            {
+              social.map((s) => (
+                <a href={s.url} target="_blank">
+                  <span class={`${s.icon} size-8 text-primary-100 hover:text-secondary-200 duration-200`}>
+                    {s.name}
+                  </span>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </Animate>
+
+      <Animate className="hidden md:block" client:load delay={500}>
+        <Image
+          class="border border-primary-200 rounded h-full w-[350px] object-cover hover:border-secondary-200"
+          width={1}
+          height={1}
+          src="https://avatars.githubusercontent.com/u/68896885?v=4"
+          alt="hamdanu"
+        />
+      </Animate>
+    </div>
+  </section>
+
+  <section class="text-primary-100 flex md:flex-row flex-col w-full gap-5">
+    <div class="w-full flex flex-col gap-5">
+      <Animate client:load delay={900} className="card py-2.5 px-5 bg-secondary-100">
+        <h1 class="text-200 font-bold">Organization</h1>
+      </Animate>
+      {
+        organizations.map((organization, i) => (
+          <Animate
+            delay={1000 + i * 100}
+            client:load
+            className="card flex md:flex-row flex-col items-start md:items-center p-5 gap-5"
+          >
+            <Image class="size-[60px] rounded" src={organization.logo} height={1} width={1} alt={organization.name} />
+            <div class="flex flex-col gap-1">
+              <h2 class="text-100 opacity-50 font-semibold">{organization.date}</h2>
+              <h1 class="text-200 font-bold">{organization.position}</h1>
+              <h2 class="text-100 opacity-50 font-semibold">{organization.name}</h2>
+            </div>
+          </Animate>
+        ))
+      }
+    </div>
+
+    <div class="w-full flex flex-col gap-5">
+      <Animate client:load delay={900} className="card py-2.5 px-5">
+        <h1 class="text-200 font-bold">Education</h1>
+      </Animate>
+      {
+        educations.map((education, i) => (
+          <Animate
+            delay={1000 + i * 100}
+            client:load
+            className="card flex md:flex-row flex-col items-start md:items-center p-5 gap-5"
+          >
+            <Image class="size-[60px] rounded" src={education.logo} height={1} width={1} alt={education.institution} />
+            <div class="flex flex-col gap-1">
+              <h2 class="text-100 opacity-50 font-semibold">{education.date}</h2>
+              <h1 class="text-200 font-bold">{education.title}</h1>
+              <h2 class="text-100 opacity-50 font-semibold">{education.institution}</h2>
+            </div>
+          </Animate>
+        ))
+      }
+    </div>
+  </section>
+
+  <Animate client:load delay={1300} className="card py-2.5 px-5 my-5 text-primary-100">
+    <h1 class="text-200 font-bold">Work experience</h1>
+  </Animate>
+
+  <Animate client:load delay={1400} className="card py-2.5 px-5 my-5 text-primary-100">
+    <h1 class="text-200 font-bold text-center">That's all for now</h1>
+  </Animate>
+</Layout>
