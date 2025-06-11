@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@plugin "@iconify/tailwind4";
+
+@theme {
+  --font-sans-serif: "Nunito Sans", sans-serif;
+  --font-serif: "Spectral", serif;
+
+  --color-primary-100: #fffcf2;
+  --color-primary-200: #ccc5b9;
+  --color-primary-300: #363431;
+  --color-primary-400: #252422;
+  --color-secondary-100: #ebad28;
+  --color-secondary-200: #eb5e28;
+
+  --text-100: 1rem; /* 16px */
+  --text-150: 1.125rem; /* 18px */
+  --text-200: 1.25rem; /* 20px */
+  --text-300: 1.5rem; /* 24px */
+  --text-400: 2rem; /* 32px */
+  --text-500: 2.25rem; /* 36px */
+}
+
+* {
+  @apply transition;
+}
+
+@layer components {
+  .card {
+    @apply bg-primary-300 border border-primary-200 hover:border-secondary-200 rounded;
+  }
+}

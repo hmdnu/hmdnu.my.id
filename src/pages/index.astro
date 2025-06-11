@@ -1,11 +1,69 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "@/layouts/Layout.astro";
+import Animate from "@/components/svelte/Animate.svelte";
+import { social } from "@/constants/social";
+import { Image } from "astro:assets";
+import Article from "@/components/astro/home/Article.astro";
+import Project from "@/components/astro/home/Project.astro";
+import About from "@/components/astro/home/About.astro";
 ---
 
+<title>Home | Hamdanu</title>
+
 <Layout>
-	<Welcome />
+  <section class="my-5 md:h-64 h-fit">
+    <div class="flex gap-5 h-full">
+      <Animate client:load className="flex gap-5 h-full w-full" delay={300}>
+        <div
+          class="text-primary-100 bg-primary-300 rounded border border-primary-200 hover:border-secondary-200 p-7 flex flex-col w-full h-full"
+        >
+          <h1 class="opacity-50 lg:text-150 text-100">welcome</h1>
+          <h1 class="lg:text-400 text-300 font-bold">I'm Hamdan Ubaidillah</h1>
+          <p class="opacity-50 lg:text-150 text-100">
+            Software Developer and Open Source Enthusiast, mostly working with Typescript, Go, and PHP. I like making
+            things that solve my problem and everyone else.
+          </p>
+
+          <div class="flex gap-2.5 mt-5">
+            {
+              social.map((s) => (
+                <a href={s.url} target="_blank">
+                  <span class={`${s.icon} size-8 text-primary-100 hover:text-secondary-200 duration-200`}>
+                    {s.name}
+                  </span>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </Animate>
+
+      <Animate className="hidden md:block" client:load delay={500}>
+        <Image
+          class="border border-primary-200 rounded h-full w-[350px] object-cover hover:border-secondary-200"
+          width={1}
+          height={1}
+          src="https://avatars.githubusercontent.com/u/68896885?v=4"
+          alt="hamdanu"
+        />
+      </Animate>
+    </div>
+  </section>
+
+  <section class="flex lg:flex-row flex-col gap-5 md:h-[520px] h-fit">
+    <About />
+    <Article />
+    <Project />
+
+    <Animate
+      client:load
+      className="card py-2.5 px-5 flex flex-col items-center lg:hidden text-primary-100"
+      delay={1200}
+    >
+      <p class="text-[14px] text-center">
+        ©{new Date().getFullYear()} · Made with
+        <a href="https://astro.build" target="_blank" class="text-secondary-200 font-bold">Astro</a>
+      </p>
+    </Animate>
+  </section>
 </Layout>
