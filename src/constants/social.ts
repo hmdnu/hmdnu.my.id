@@ -21,4 +21,4 @@ export const social = [
     icon: "icon-[mdi--instagram]",
     url: icon.instagram,
   },
-];
+] as const;

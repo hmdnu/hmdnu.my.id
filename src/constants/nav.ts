@@ -15,4 +15,4 @@ export const navItems = [
     name: "Blog",
     url: "/blog",
   },
-];
+] as const;

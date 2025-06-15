@@ -1,0 +1,39 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import Animate from "@/components/Animate.svelte";
+import ThatsAll from "@/components/ThatsAll.astro";
+import ProjectCard from "@/components/card/ProjectCard.astro";
+
+const projects = await getCollection("projects");
+
+console.log(projects);
+---
+
+<title>Projects | Hamdanu</title>
+
+<Layout>
+  {
+    projects.length !== 0 ? (
+      <section class="text-primary-100">
+        <div class="my-5 grid grid-cols-3 gap-5 w-full">
+          {projects.map((project, i) => (
+            <ProjectCard
+              title={project.data.title}
+              description={project.data.description}
+              techStack={project.data.techStack}
+              img={project.data.img}
+              slug={project.slug}
+              delay={300 + i * 100}
+            />
+          ))}
+        </div>
+        <ThatsAll client:load delay={300} />
+      </section>
+    ) : (
+      <Animate client:load delay={300} className="card text-primary-100 my-5 p-5">
+        <h1 class="text-300 text-center font-bold">Nothing to see here (=w=)</h1>
+      </Animate>
+    )
+  }
+</Layout>

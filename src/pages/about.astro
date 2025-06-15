@@ -1,10 +1,11 @@
 ---
 import { social } from "@/constants/social";
 import Layout from "@/layouts/Layout.astro";
-import Animate from "@/components/svelte/Animate.svelte";
+import Animate from "@/components/Animate.svelte";
+import ThatsAll from "@/components/ThatsAll.astro";
 import { Image } from "astro:assets";
-import { educations } from "@/data/education";
-import { organizations } from "@/data/organization";
+import { educations } from "@/constants/education";
+import { organizations } from "@/constants/organization";
 ---
 
 <title>About | Hamdanu</title>
@@ -102,7 +103,5 @@ import { organizations } from "@/data/organization";
     <h1 class="text-200 font-bold">Work experience</h1>
   </Animate>
 
-  <Animate client:load delay={1400} className="card py-2.5 px-5 my-5 text-primary-100">
-    <h1 class="text-200 font-bold text-center">That's all for now</h1>
-  </Animate>
+  <ThatsAll client:load delay={1400} />
 </Layout>

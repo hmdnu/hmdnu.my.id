@@ -6,4 +6,36 @@ export const icon = {
   newTab: "icon-[cuida--open-in-new-tab-outline]",
   download: "icon-[line-md--download]",
   calender: "icon-[uis--calender]",
-};
+  typescript: "icon-[akar-icons--typescript-fill]",
+  javascript: "icon-[akar-icons--javascript-fill]",
+  go: "icon-[file-icons--go]",
+  next: "icon-[akar-icons--nextjs-fill]",
+  remix: "icon-[lineicons--remix-js]",
+  react: "icon-[akar-icons--react-fill]",
+  php: "icon-[akar-icons--php-fill]",
+  laravel: "icon-[lineicons--laravel]",
+  tailwind: "icon-[lineicons--tailwindcss]",
+  web: "icon-[streamline-plump--web]",
+} as const;
+
+export const iconKeys = [
+  "email",
+  "github",
+  "linkedin",
+  "instagram",
+  "newTab",
+  "download",
+  "calender",
+  "typescript",
+  "javascript",
+  "go",
+  "next",
+  "remix",
+  "react",
+  "php",
+  "laravel",
+  "tailwind",
+  "web",
+] as const;
+
+export type IconKey = keyof typeof icon;

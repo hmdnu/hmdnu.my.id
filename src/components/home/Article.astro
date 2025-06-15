@@ -1,0 +1,50 @@
+---
+import { icon } from "@/constants/icon";
+import Animate from "@/components/Animate.svelte";
+import { getCollection } from "astro:content";
+
+const articles = await getCollection("articles");
+const article = new Array(0);
+---
+
+<section class="h-full w-full text-primary-100 flex flex-col gap-5">
+  <Animate client:load delay={900} className="card py-2.5 px-5">
+    <h1 class="text-200 font-bold">Some of my article</h1>
+  </Animate>
+  <section class="flex flex-col gap-5 h-full">
+    {
+      articles.length !== 0 ? (
+        articles.slice(0, 2).map((article, i) => (
+          <Animate
+            client:load
+            className={`card p-5 flex flex-col justify-center ${articles.length === 1 ? "h-fit" : "h-full"}`}
+            delay={1000 + i * 100}
+          >
+            <a href="/article">
+              <div class="mb-2.5">
+                <h1 class="lg:text-300 text-200 font-bold">{article.data.title}</h1>
+                <p class="text-100 font-medium opacity-50">{article.data.description}</p>
+              </div>
+
+              <div class="flex gap-1">
+                <span class={`${icon.calender} text-primary-100 size-5`} />
+                <p>{article.data.publishDate}</p>
+              </div>
+            </a>
+          </Animate>
+        ))
+      ) : (
+        <Animate delay={1000} client:load className="card p-5 h-full flex justify-center items-center">
+          <h1 class="text-200 font-bold">Currently none</h1>
+        </Animate>
+      )
+    }
+  </section>
+
+  <Animate client:load delay={1300}>
+    <a href="/about" class="card py-2.5 px-5 flex justify-between items-center">
+      <h1 class="text-200 font-bold">All my article</h1>
+      <span class={`${icon.newTab} size-5`}></span>
+    </a>
+  </Animate>
+</section>

@@ -1,0 +1,46 @@
+---
+import { icon } from "@/constants/icon";
+import Animate from "@/components/Animate.svelte";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
+---
+
+<section class="h-full w-full text-primary-100 flex flex-col gap-5">
+  <Animate client:load delay={900} className="card py-2.5 px-5">
+    <h1 class="text-200 font-bold">Some of my work</h1>
+  </Animate>
+  {
+    projects.length !== 0 ? (
+      projects.slice(0, 2).map((project, i) => (
+        <Animate client:load className="flex flex-col gap-5 h-full" delay={1000 + i * 100}>
+          <a href={`/projects/${project.slug}`} class="block group h-full">
+            <div class="card relative lg:h-full h-[175px] rounded">
+              <div
+                style={`background-image: url('${project.data.img}')`}
+                class={`absolute inset-0 bg-center bg-cover opacity-90 group-hover:opacity-40 transition-opacity duration-300 bg-s`}
+              />
+
+              <div class="relative flex items-center justify-center h-full">
+                <h1 class="text-300 font-bold text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-full flex items-center justify-center">
+                  {project.data.title}
+                </h1>
+              </div>
+            </div>
+          </a>
+        </Animate>
+      ))
+    ) : (
+      <Animate delay={1000} client:load className="card p-5 h-full flex justify-center items-center">
+        <h1 class="text-200 font-bold">Currently none</h1>
+      </Animate>
+    )
+  }
+
+  <Animate client:load delay={1100}>
+    <a href="/projects" class="card bg-secondary-200 py-2.5 px-5 flex justify-between items-center">
+      <h1 class="text-200 font-bold">All my projects</h1>
+      <span class={`${icon.newTab} size-5`}></span>
+    </a>
+  </Animate>
+</section>

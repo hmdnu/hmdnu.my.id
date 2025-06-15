@@ -1,0 +1,39 @@
+---
+import Animate from "@/components/Animate.svelte";
+import { Image } from "astro:assets";
+
+interface Props {
+  delay: number;
+  title: string;
+  description: string;
+  techStack: {
+    icon: string;
+    tech: string;
+  }[];
+  img: string;
+  slug: string;
+}
+
+const { delay, title, description, techStack, img, slug } = Astro.props;
+---
+
+<Animate client:load delay={delay} className="card h-fit">
+  <a href={`/projects/${slug}`}>
+    <Image src={img} alt="project" width={1} height={1} class="h-fit w-full object-cover" />
+
+    <div class="bg-primary-300 p-5 rounded flex flex-col gap-5">
+      <div class="flex flex-col gap-1">
+        <h1 class="text-200 font-bold">{title}</h1>
+        <h2 class="text-100 opacity-50">{description}</h2>
+      </div>
+
+      <div class="flex gap-2.5">
+        {
+          techStack.map((stack) => (
+            <span class="bg-primary-400 px-3.5 py-1.5 rounded font-bold text-100">{stack.tech}</span>
+          ))
+        }
+      </div>
+    </div>
+  </a>
+</Animate>
