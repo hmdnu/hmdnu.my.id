@@ -3,22 +3,22 @@ import { icon } from "./icon";
 export const social = [
   {
     name: "email",
-    icon: "icon-[dashicons--email-alt]",
-    url: icon.email,
+    icon: icon.email,
+    url: "",
   },
   {
     name: "github",
-    icon: "icon-[mdi--github]",
-    url: icon.github,
+    icon: icon.github,
+    url: "https://github.com/hmdnu",
   },
   {
     name: "linkedin",
-    icon: "icon-[mdi--linkedin]",
-    url: icon.linkedin,
+    icon: icon.linkedin,
+    url: "",
   },
   {
     name: "instagram",
-    icon: "icon-[mdi--instagram]",
-    url: icon.instagram,
+    icon: icon.instagram,
+    url: "https://instagram.com/hmdnubaidillah",
   },
 ] as const;
