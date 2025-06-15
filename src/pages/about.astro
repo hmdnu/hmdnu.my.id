@@ -2,7 +2,6 @@
 import { social } from "@/constants/social";
 import Layout from "@/layouts/Layout.astro";
 import Animate from "@/components/Animate.svelte";
-import ThatsAll from "@/components/ThatsAll.astro";
 import { Image } from "astro:assets";
 import { educations } from "@/constants/education";
 import { organizations } from "@/constants/organization";
@@ -102,6 +101,4 @@ import { organizations } from "@/constants/organization";
   <Animate client:load delay={1300} className="card py-2.5 px-5 my-5 text-primary-100">
     <h1 class="text-200 font-bold">Work experience</h1>
   </Animate>
-
-  <ThatsAll client:load delay={1400} />
 </Layout>

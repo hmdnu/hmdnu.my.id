@@ -2,7 +2,6 @@
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import Animate from "@/components/Animate.svelte";
-import ThatsAll from "@/components/ThatsAll.astro";
 import ProjectCard from "@/components/card/ProjectCard.astro";
 
 const projects = await getCollection("projects");
@@ -28,7 +27,6 @@ console.log(projects);
             />
           ))}
         </div>
-        <ThatsAll client:load delay={300} />
       </section>
     ) : (
       <Animate client:load delay={300} className="card text-primary-100 my-5 p-5">
