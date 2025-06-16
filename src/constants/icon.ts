@@ -16,26 +16,9 @@ export const icon = {
   laravel: "icon-[lineicons--laravel]",
   tailwind: "icon-[lineicons--tailwindcss]",
   web: "icon-[streamline-plump--web]",
+  edit: "icon-[lucide--edit]",
 } as const;
 
-export const iconKeys = [
-  "email",
-  "github",
-  "linkedin",
-  "instagram",
-  "newTab",
-  "download",
-  "calender",
-  "typescript",
-  "javascript",
-  "go",
-  "next",
-  "remix",
-  "react",
-  "php",
-  "laravel",
-  "tailwind",
-  "web",
-] as const;
+export const iconKeys = Object.keys(icon) as Array<keyof typeof icon>;
 
 export type IconKey = keyof typeof icon;

@@ -2,17 +2,16 @@
 import Animate from "@/components/Animate.svelte";
 import { Image } from "astro:assets";
 
-interface Props {
+type Props = {
   delay: number;
   title: string;
   description: string;
   techStack: {
-    icon: string;
     tech: string;
   }[];
   img: string;
   slug: string;
-}
+};
 
 const { delay, title, description, techStack, img, slug } = Astro.props;
 ---

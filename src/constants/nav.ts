@@ -12,7 +12,7 @@ export const navItems = [
     url: "/projects",
   },
   {
-    name: "Blog",
-    url: "/blog",
+    name: "Articles",
+    url: "/articles",
   },
 ] as const;

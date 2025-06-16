@@ -6,7 +6,6 @@ const articles = defineCollection({
     title: z.string(),
     description: z.string(),
     publishDate: z.coerce.date(),
-    tags: z.array(z.string()),
   }),
 });
 
@@ -16,7 +15,7 @@ const projects = defineCollection({
     description: z.string(),
     techStack: z.array(
       z.object({
-        icon: z.enum(iconKeys),
+        icon: z.string(),
         tech: z.string(),
       })
     ),

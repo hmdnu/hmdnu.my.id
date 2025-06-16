@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import Animate from "@/components/Animate.svelte";
+import ArticleCard from "@/components/card/ArticleCard.astro";
+
+const articles = await getCollection("articles");
+---
+
+<Layout>
+  <section class="my-5 text-primary-100 flex flex-col gap-5">
+    {
+      articles.length !== 0 ? (
+        articles.map((article, i) => (
+          <ArticleCard
+            slug={article.slug}
+            delay={300 + i * 100}
+            title={article.data.title}
+            description={article.data.description}
+            publishDate={article.data.publishDate}
+          />
+        ))
+      ) : (
+        <Animate client:load delay={300} className="card text-primary-100 p-5">
+          <h1 class="text-300 text-center font-bold">Nothing to see here (=w=)</h1>
+        </Animate>
+      )
+    }
+  </section>
+</Layout>

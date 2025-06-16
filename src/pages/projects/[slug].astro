@@ -5,22 +5,22 @@ import { getCollection, render, type CollectionEntry } from "astro:content";
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
 
-  return projects.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
   }));
 }
 
 type Props = {
-  entry: CollectionEntry<"projects">;
+  project: CollectionEntry<"projects">;
 };
 
-const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { project } = Astro.props;
+const { Content } = await render(project);
 ---
 
-<title>{entry.data.title} | Hamdanu</title>
+<title>{project.data.title} | Hamdanu</title>
 
-<ProjectLayout slug={entry.data}>
+<ProjectLayout slug={project.data}>
   <Content />
 </ProjectLayout>

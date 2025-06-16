@@ -1,0 +1,33 @@
+---
+import { icon } from "@/constants/icon";
+import Animate from "@/components/Animate.svelte";
+
+type Props = {
+  slug: string;
+  title: string;
+  description: string;
+  publishDate: Date;
+  delay: number;
+};
+
+const { slug, title, description, publishDate, delay } = Astro.props;
+---
+
+<Animate delay={delay} client:load>
+  <a href={`/articles/${slug}`} class="card p-5 flex flex-col gap-1.5">
+    <h1 class="md:text-300 text-200 font-bold">{title}</h1>
+    <h2 class="font-semibold opacity-50">{description}</h2>
+    <div class="flex gap-1.5">
+      <span class={`${icon.calender} size-5`}></span>
+      <h2 class="font-semibold">
+        {
+          publishDate.toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          })
+        }
+      </h2>
+    </div>
+  </a>
+</Animate>

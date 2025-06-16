@@ -4,7 +4,6 @@ import Animate from "@/components/Animate.svelte";
 import { getCollection } from "astro:content";
 
 const articles = await getCollection("articles");
-const article = new Array(0);
 ---
 
 <section class="h-full w-full text-primary-100 flex flex-col gap-5">
@@ -20,7 +19,7 @@ const article = new Array(0);
             className={`card p-5 flex flex-col justify-center ${articles.length === 1 ? "h-fit" : "h-full"}`}
             delay={1000 + i * 100}
           >
-            <a href="/article">
+            <a href={`/articles/${article.slug}`}>
               <div class="mb-2.5">
                 <h1 class="lg:text-300 text-200 font-bold">{article.data.title}</h1>
                 <p class="text-100 font-medium opacity-50">{article.data.description}</p>
@@ -28,7 +27,13 @@ const article = new Array(0);
 
               <div class="flex gap-1">
                 <span class={`${icon.calender} text-primary-100 size-5`} />
-                <p>{article.data.publishDate}</p>
+                <p>
+                  {article.data.publishDate.toLocaleDateString("en-GB", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </p>
               </div>
             </a>
           </Animate>
