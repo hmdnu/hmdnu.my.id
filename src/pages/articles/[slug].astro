@@ -22,6 +22,8 @@ const { article } = Astro.props;
 const { Content } = await render(article);
 ---
 
+<title>{article.data.title} | Hamdanu</title>
+
 <ArticleLayout article={article.data} slug={article.slug}>
   <Content />
 </ArticleLayout>
