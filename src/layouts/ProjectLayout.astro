@@ -1,4 +1,5 @@
 ---
+import Animate from "@/components/Animate.svelte";
 import { Image } from "astro:assets";
 import Layout from "./Layout.astro";
 import { type ProjectContent } from "@/types/project";
@@ -14,11 +15,14 @@ const { slug } = Astro.props as Props;
 <Layout>
   <section class="text-primary-100 my-5 flex gap-5">
     <div>
-      <Image src={slug.img} alt={slug.title} width={1} height={1} class="card w-full mb-5" />
+      <Animate client:load delay={300}>
+        <Image src={slug.img} alt={slug.title} width={1} height={1} class="card w-full mb-5" />
+      </Animate>
 
-      <div class="h-fit flex-1/2 md:hidden block">
+      <!-- mobile view -->
+      <Animate client:load delay={500} className="h-fit flex-1/2 md:hidden block">
         <div class="card px-5 py-2.5 bg-secondary-200 mb-5">
-          <h1 class="text-150 font-bold">Tech stack</h1>
+          <h1 class="text-150 font-bold">Tech stacks</h1>
         </div>
         <div class="flex flex-col gap-5">
           {
@@ -30,8 +34,9 @@ const { slug } = Astro.props as Props;
             ))
           }
         </div>
-      </div>
-      <div class="flex gap-5 my-5 justify-end">
+      </Animate>
+
+      <Animate delay={700} client:load className="flex gap-5 my-5 justify-end">
         {
           slug.source ? (
             <a href={slug.source} class="card flex items-center justify-center gap-1.5 px-2.5 py-1.5 md:w-fit w-full">
@@ -48,17 +53,17 @@ const { slug } = Astro.props as Props;
             </a>
           ) : null
         }
-      </div>
+      </Animate>
 
-      <div class="card p-5">
+      <Animate client:load delay={900} className="card p-5">
         <h1 class="text-300 font-bold mb-5">{slug.title}</h1>
         <div class="prose prose-invert max-w-none text-primary-100">
           <slot />
         </div>
-      </div>
+      </Animate>
     </div>
 
-    <div class="h-fit flex-1/2 md:block hidden">
+    <Animate client:load delay={500} className="h-fit flex-1/2 md:block hidden">
       <div class="card px-5 py-2.5 bg-secondary-200 mb-5">
         <h1 class="text-150 font-bold">Tech stack</h1>
       </div>
@@ -72,6 +77,6 @@ const { slug } = Astro.props as Props;
           ))
         }
       </div>
-    </div>
+    </Animate>
   </section>
 </Layout>
