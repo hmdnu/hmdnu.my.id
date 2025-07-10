@@ -3,10 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import Animate from "@/components/Animate.svelte";
 ---
 
-<Layout>
-  <section class="my-5 text-primary-100 flex flex-col gap-5">
-    <Animate client:load delay={400} className="card p-5">
-      <h1 class="text-center font-bold" style="font-size: 24px;">Page not found (=w=)</h1>
-    </Animate>
-  </section>
+<Layout title="Page not found">
+    <h1 class="font-bold text-400">Page not found.</h1>
 </Layout>

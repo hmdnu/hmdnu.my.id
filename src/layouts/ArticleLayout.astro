@@ -5,40 +5,38 @@ import type { ArticleContent } from "@/types/article";
 import { icon } from "@/constants/icon";
 
 export type Props = {
-  article: ArticleContent;
-  slug: string;
+    article: ArticleContent;
+    slug: string;
 };
 
 const { article, slug } = Astro.props as Props;
 ---
 
-<Layout>
-  <section class="my-5 text-primary-100">
-    <Animate client:load delay={300} className="card mb-5 p-5 flex flex-col gap-2">
-      <h1 class="text-300 font-bold">{article.title}</h1>
-      <h2 class="text-150 opacity-50">
-        Posted on
-        {
-          article.publishDate.toLocaleDateString("en-GB", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-          })
-        }
-      </h2>
-      <a
-        href={`https://github.com/hmdnu/hamdanu.my.id/blob/main/src/content/articles/${slug}.mdx`}
-        class="flex items-center gap-2.5 w-fit hover:underline"
-        target="_blank"
-      >
-        <span class={`${icon.edit} size-5`}></span>
-        <h1 class="text-150 font-semibold">Request an edit</h1>
-      </a>
-    </Animate>
-    <Animate client:load delay={400}>
-      <div class="prose prose-invert max-w-none card p-5 text-primary-100">
+<Layout title={article.title}>
+    <div class="mb-20 flex justify-between items-end gap-2">
+        <div>
+            <h1 class="text-300 font-bold mb-1.5">{article.title}</h1>
+            <h2 class="opacity-60">
+                Posted on
+                {
+                    article.publishDate.toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                    })
+                }
+            </h2>
+        </div>
+        <a
+            href={`https://github.com/hmdnu/hamdanu.my.id/blob/main/src/content/articles/${slug}.mdx`}
+            class="flex items-center gap-2.5 w-fit hover:opacity-50"
+            target="_blank"
+        >
+            <span class={`${icon.edit} size-5`}></span>
+            <h1 class="font-semibold">Request an edit</h1>
+        </a>
+    </div>
+    <div class="prose max-w-none">
         <slot />
-      </div>
-    </Animate>
-  </section>
+    </div>
 </Layout>

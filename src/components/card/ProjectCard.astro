@@ -1,38 +1,21 @@
 ---
-import Animate from "@/components/Animate.svelte";
-import { Image } from "astro:assets";
-
 type Props = {
-  delay: number;
-  title: string;
-  description: string;
-  techStack: {
-    tech: string;
-  }[];
-  img: string;
-  slug: string;
+    title: string;
+    description: string;
+    techStack: string[];
+    img: string;
+    slug: string;
 };
 
-const { delay, title, description, techStack, img, slug } = Astro.props;
+const { title, description, techStack, img, slug } = Astro.props;
 ---
 
-<Animate client:load delay={delay} className="card h-fit">
-  <a href={`/projects/${slug}`}>
-    <Image src={img} alt="project" width={1} height={1} class="h-fit w-full object-cover" />
-
-    <div class="bg-primary-300 p-5 rounded flex flex-col gap-5">
-      <div class="flex flex-col gap-1">
-        <h1 class="text-200 font-bold">{title}</h1>
-        <h2 class="text-100 opacity-50">{description}</h2>
-      </div>
-
-      <div class="flex gap-2.5">
-        {
-          techStack.map((stack) => (
-            <span class="bg-primary-400 px-3.5 py-1.5 rounded font-bold text-100">{stack.tech}</span>
-          ))
-        }
-      </div>
+<a href={`/projects/${slug}`} class="flex justify-between items-end hover:opacity-50">
+    <div>
+        <h1 class="text-200 font-bold mb-1.5">{title}</h1>
+        <h2 class="opacity-60">{description}</h2>
     </div>
-  </a>
-</Animate>
+    <div class="flex gap-1.5">
+        {techStack.map((tech) => <h1 class="font-semibold">#{tech}</h1>)}
+    </div>
+</a>

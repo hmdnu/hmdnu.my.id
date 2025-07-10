@@ -6,24 +6,22 @@ import { render } from "astro:content";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const articles = await getCollection("articles");
+    const articles = await getCollection("articles");
 
-  return articles.map((article) => ({
-    params: { slug: article.slug },
-    props: { article },
-  }));
+    return articles.map((article) => ({
+        params: { slug: article.slug },
+        props: { article },
+    }));
 }
 
 type Props = {
-  article: CollectionEntry<"articles">;
+    article: CollectionEntry<"articles">;
 };
 
 const { article } = Astro.props;
 const { Content } = await render(article);
 ---
 
-<title>{article.data.title} | Hamdanu</title>
-
 <ArticleLayout article={article.data} slug={article.slug}>
-  <Content />
+    <Content />
 </ArticleLayout>

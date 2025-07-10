@@ -1,82 +1,64 @@
 ---
-import Animate from "@/components/Animate.svelte";
 import { Image } from "astro:assets";
 import Layout from "./Layout.astro";
 import { type ProjectContent } from "@/types/project";
 import { icon } from "@/constants/icon";
 
 export type Props = {
-  slug: ProjectContent;
+    slug: ProjectContent;
 };
 
 const { slug } = Astro.props as Props;
 ---
 
-<Layout>
-  <section class="text-primary-100 my-5 flex gap-5">
-    <div>
-      <Animate client:load delay={300}>
-        <Image src={slug.img} alt={slug.title} width={1} height={1} class="card w-full mb-5" />
-      </Animate>
+<Layout title={slug.title}>
+    <section>
+        <Image
+            src={slug.img}
+            alt={slug.title}
+            width={1}
+            height={1}
+            class="card w-full mb-5 border border-gray-300 rounded-md"
+        />
 
-      <!-- mobile view -->
-      <Animate client:load delay={500} className="h-fit flex-1/2 md:hidden block">
-        <div class="card px-5 py-2.5 bg-secondary-200 mb-5">
-          <h1 class="text-150 font-bold">Tech stacks</h1>
-        </div>
-        <div class="flex flex-col gap-5">
-          {
-            slug.techStack.map(({ icon: IconKey, tech }) => (
-              <div class="card px-5 py-2.5 flex items-center gap-2.5">
-                <span class={`${icon[IconKey as keyof typeof icon]} size-5`} />
-                <h1 class="text-150 font-semibold">{tech}</h1>
-              </div>
-            ))
-          }
-        </div>
-      </Animate>
-
-      <Animate delay={700} client:load className="flex gap-5 my-5 justify-end">
-        {
-          slug.source ? (
-            <a href={slug.source} class="card flex items-center justify-center gap-1.5 px-2.5 py-1.5 md:w-fit w-full">
-              <span class={`${icon.github} size-6`} />
-              <h1 class="text-150 font-semibold">Source</h1>
-            </a>
-          ) : null
-        }
-        {
-          slug.demo ? (
-            <a href={slug.demo} class="card flex items-center justify-center gap-1.5 px-2.5 py-1.5 md:w-fit w-full">
-              <span class={`${icon.web} size-5`} />
-              <h1 class="text-150 font-semibold">Visit</h1>
-            </a>
-          ) : null
-        }
-      </Animate>
-
-      <Animate client:load delay={900} className="card p-5">
-        <h1 class="text-300 font-bold mb-5">{slug.title}</h1>
-        <div class="prose prose-invert max-w-none text-primary-100">
-          <slot />
-        </div>
-      </Animate>
-    </div>
-
-    <Animate client:load delay={500} className="h-fit flex-1/2 md:block hidden">
-      <div class="card px-5 py-2.5 bg-secondary-200 mb-5">
-        <h1 class="text-150 font-bold">Tech stack</h1>
-      </div>
-      <div class="flex flex-col gap-5">
-        {
-          slug.techStack.map(({ icon: IconKey, tech }) => (
-            <div class="card px-5 py-2.5 flex items-center gap-2.5">
-              <span class={`${icon[IconKey as keyof typeof icon]} size-5`} />
-              <h1 class="text-150 font-semibold">{tech}</h1>
+        <div class="mt-14 flex justify-between items-end">
+            <div class="flex gap-2.5">
+                <h1 class="font-medium">Tags:</h1>
+                {slug.techStack.map((tech) => <label class="font-semibold">#{tech}</label>)}
             </div>
-          ))
-        }
-      </div>
-    </Animate>
-  </section>
+            <div class="flex gap-2.5">
+                {
+                    slug.source ? (
+                        <a
+                            href={slug.source}
+                            class="flex items-center gap-1.5 bg-[#333] w-fit rounded-md px-4 py-2 hover:opacity-50"
+                            target="_blank"
+                        >
+                            <span class={`${icon.github} size-6 text-white`} />
+                            <h1 class="font-semibold text-white">Source</h1>
+                        </a>
+                    ) : null
+                }
+                {
+                    slug.source ? (
+                        <a
+                            href={slug.demo}
+                            class="flex items-center gap-1.5 border border-gray-400 w-fit rounded-md px-4 py-2 hover:opacity-50"
+                            target="_blank"
+                        >
+                            <span class={`${icon.web} size-6`} />
+                            <h1 class="font-semibold">Demo</h1>
+                        </a>
+                    ) : null
+                }
+            </div>
+        </div>
+
+        <div class="mt-14">
+            <h1 class="text-300 font-bold mb-5">{slug.title}</h1>
+            <div class="prose max-w-none text-primary-100">
+                <slot />
+            </div>
+        </div>
+    </section>
 </Layout>

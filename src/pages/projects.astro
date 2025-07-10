@@ -1,35 +1,27 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import Animate from "@/components/Animate.svelte";
 import ProjectCard from "@/components/card/ProjectCard.astro";
+import Empty from "@/components/Empty.astro";
 
 const projects = await getCollection("projects");
 ---
 
-<title>Projects | Hamdanu</title>
-
-<Layout>
-  {
-    projects.length !== 0 ? (
-      <section class="text-primary-100">
-        <div class="my-5 grid grid-cols-3 gap-5 w-full">
-          {projects.map((project, i) => (
-            <ProjectCard
-              title={project.data.title}
-              description={project.data.description}
-              techStack={project.data.techStack}
-              img={project.data.img}
-              slug={project.slug}
-              delay={300 + i * 100}
-            />
-          ))}
-        </div>
-      </section>
-    ) : (
-      <Animate client:load delay={300} className="card text-primary-100 my-5 p-5">
-        <h1 class="text-300 text-center font-bold">Nothing to see here (=w=)</h1>
-      </Animate>
-    )
-  }
+<Layout title="Projects">
+    <h1 class="text-300 font-bold mb-10">My Projects</h1>
+    {
+        projects.length !== 0 ? (
+            projects.map((project, i) => (
+                <ProjectCard
+                    title={project.data.title}
+                    description={project.data.description}
+                    techStack={project.data.techStack}
+                    img={project.data.img}
+                    slug={project.slug}
+                />
+            ))
+        ) : (
+            <Empty props="No projects yet" />
+        )
+    }
 </Layout>

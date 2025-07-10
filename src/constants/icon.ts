@@ -1,8 +1,8 @@
 export const icon = {
-  email: "icon-[dashicons--email-alt]",
+  email: "icon-[ic--round-email]",
   github: "icon-[mdi--github]",
   linkedin: "icon-[mdi--linkedin]",
-  instagram: "icon-[mdi--instagram]",
+  instagram: "icon-[ri--instagram-fill]",
   newTab: "icon-[cuida--open-in-new-tab-outline]",
   download: "icon-[line-md--download]",
   calender: "icon-[uis--calender]",

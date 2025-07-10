@@ -1,33 +1,30 @@
 ---
-import { icon } from "@/constants/icon";
-import Animate from "@/components/Animate.svelte";
-
 type Props = {
-  slug: string;
-  title: string;
-  description: string;
-  publishDate: Date;
-  delay: number;
+    slug: string;
+    title: string;
+    description: string;
+    publishDate: Date;
+    tags: string[];
 };
 
-const { slug, title, description, publishDate, delay } = Astro.props;
+const { slug, title, description, publishDate, tags } = Astro.props;
 ---
 
-<Animate delay={delay} client:load>
-  <a href={`/articles/${slug}`} class="card p-5 flex flex-col gap-1.5">
-    <h1 class="md:text-300 text-200 font-bold">{title}</h1>
-    <h2 class="font-semibold opacity-50">{description}</h2>
-    <div class="flex gap-1.5">
-      <span class={`${icon.calender} size-5`}></span>
-      <h2 class="font-semibold">
-        {
-          publishDate.toLocaleDateString("en-GB", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-          })
-        }
-      </h2>
+<a href={`/articles/${slug}`} class="flex justify-between items-end hover:opacity-50">
+    <div>
+        <h1 class="text-200 font-bold mb-1.5">{title}</h1>
+        <h2 class="opacity-60 mb-1.5">{description}</h2>
+        <h2 class="opacity-60">
+            {
+                publishDate.toLocaleDateString("en-GB", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                })
+            }
+        </h2>
     </div>
-  </a>
-</Animate>
+    <div class="flex gap-1.5">
+        {tags.map((tag) => <h1 class="font-semibold">#{tag}</h1>)}
+    </div>
+</a>

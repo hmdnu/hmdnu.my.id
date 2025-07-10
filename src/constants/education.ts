@@ -5,6 +5,7 @@ export const educations = [
     title: "Bachelor of Applied Science, Information Technology",
     date: "August 2023 - Present",
   },
+  
   {
     logo: "/assets/smarifda.png",
     institution: "Maarif NU Senior High School, Pandaan",
