@@ -13,10 +13,10 @@ const { article, slug } = Astro.props as Props;
 ---
 
 <Layout title={article.title}>
-    <div class="mb-20 flex justify-between items-end gap-2">
+    <div class="mb-20 flex sm:flex-row flex-col justify-between sm:items-end items-start gap-2">
         <div>
-            <h1 class="text-300 font-bold mb-1.5">{article.title}</h1>
-            <h2 class="opacity-60">
+            <h1 class="sm:text-300 text-200 font-bold mb-1.5">{article.title}</h1>
+            <h2 class="opacity-60 sm:text-100 text-[14px]">
                 Posted on
                 {
                     article.publishDate.toLocaleDateString("en-GB", {
@@ -29,14 +29,14 @@ const { article, slug } = Astro.props as Props;
         </div>
         <a
             href={`https://github.com/hmdnu/hamdanu.my.id/blob/main/src/content/articles/${slug}.mdx`}
-            class="flex items-center gap-2.5 w-fit hover:opacity-50"
+            class="flex items-center gap-1.5 w-fit hover:opacity-50 sm:text-100 text-[14px]"
             target="_blank"
         >
-            <span class={`${icon.edit} size-5`}></span>
+            <span class={`${icon.edit} sm:size-5 size-4`}></span>
             <h1 class="font-semibold">Request an edit</h1>
         </a>
     </div>
-    <div class="prose max-w-none">
+    <div class="prose max-w-none text-primary sm:text-100 text-[14px]">
         <slot />
     </div>
 </Layout>

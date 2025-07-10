@@ -1,8 +1,8 @@
 ---
 import "@/style/global.css";
-import { navItems } from "@/constants/nav";
 import SocialMedia from "@/components/SocialMedia.astro";
 import { ClientRouter } from "astro:transitions";
+import Nav from "@/components/Nav.svelte";
 
 type Props = {
     title: string;
@@ -26,19 +26,9 @@ const { title } = Astro.props;
             rel="stylesheet"
         />
     </head>
-    <body class="text-primary font-primary w-[55%] mx-auto bg-white">
-        <nav class="flex justify-between items-end py-5 sticky top-0 bg-inherit z-50">
-            <a href="/" class="text-300 font-bold hover:opacity-50">hmdnu</a>
-            <div class="flex gap-5">
-                {
-                    navItems.map((item) => (
-                        <a href={item.url} class="font-semibold text-100 hover:opacity-50">
-                            {item.name}
-                        </a>
-                    ))
-                }
-            </div>
-        </nav>
+    <body class="text-primary font-primary w-[60%] max-lg:w-[80%] max-sm:w-[90%] mx-auto bg-white">
+        <Nav client:load />
+
         <main class="mt-16 mb-5">
             <slot />
             <footer class="mt-16 flex items-center justify-between">

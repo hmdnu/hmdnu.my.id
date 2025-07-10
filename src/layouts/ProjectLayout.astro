@@ -21,17 +21,16 @@ const { slug } = Astro.props as Props;
             class="card w-full mb-5 border border-gray-300 rounded-md"
         />
 
-        <div class="mt-14 flex justify-between items-end">
+        <div class="mt-14 flex sm:flex-row flex-col-reverse gap-5 justify-between items-end">
             <div class="flex gap-2.5">
-                <h1 class="font-medium">Tags:</h1>
                 {slug.techStack.map((tech) => <label class="font-semibold">#{tech}</label>)}
             </div>
-            <div class="flex gap-2.5">
+            <div class="flex flex-row gap-2.5 items-center">
                 {
                     slug.source ? (
                         <a
                             href={slug.source}
-                            class="flex items-center gap-1.5 bg-[#333] w-fit rounded-md px-4 py-2 hover:opacity-50"
+                            class="flex items-center gap-1.5 bg-[#333] rounded-md px-4 py-2 hover:opacity-50"
                             target="_blank"
                         >
                             <span class={`${icon.github} size-6 text-white`} />
@@ -43,7 +42,7 @@ const { slug } = Astro.props as Props;
                     slug.source ? (
                         <a
                             href={slug.demo}
-                            class="flex items-center gap-1.5 border border-gray-400 w-fit rounded-md px-4 py-2 hover:opacity-50"
+                            class="flex items-center gap-1.5 border border-gray-400 rounded-md px-4 py-2 hover:opacity-50"
                             target="_blank"
                         >
                             <span class={`${icon.web} size-6`} />
@@ -56,7 +55,7 @@ const { slug } = Astro.props as Props;
 
         <div class="mt-14">
             <h1 class="text-300 font-bold mb-5">{slug.title}</h1>
-            <div class="prose max-w-none text-primary-100">
+            <div class="prose max-w-none text-primary-100 sm:text-100 text-[14px]">
                 <slot />
             </div>
         </div>

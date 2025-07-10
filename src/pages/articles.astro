@@ -9,7 +9,7 @@ const articles = await getCollection("articles");
 ---
 
 <Layout title="Articles">
-    <h1 class="text-300 font-bold mb-10">My Articles</h1>
+    <h1 class="sm:text-300 text-200 font-bold mb-10">My Articles</h1>
     {
         articles.length !== 0 ? (
             articles.map((article, i) => (

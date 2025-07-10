@@ -10,7 +10,10 @@ type Props = {
 const { slug, title, description, publishDate, tags } = Astro.props;
 ---
 
-<a href={`/articles/${slug}`} class="flex justify-between items-end hover:opacity-50">
+<a
+    href={`/articles/${slug}`}
+    class="flex flex-col sm:flex-row gap-5 justify-between sm:items-end items-start hover:opacity-50"
+>
     <div>
         <h1 class="text-200 font-bold mb-1.5">{title}</h1>
         <h2 class="opacity-60 mb-1.5">{description}</h2>

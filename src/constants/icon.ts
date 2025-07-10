@@ -17,6 +17,7 @@ export const icon = {
   tailwind: "icon-[lineicons--tailwindcss]",
   web: "icon-[streamline-plump--web]",
   edit: "icon-[lucide--edit]",
+  menu: "icon-[ep--menu]",
 } as const;
 
 export const iconKeys = Object.keys(icon) as Array<keyof typeof icon>;

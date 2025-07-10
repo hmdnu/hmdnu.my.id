@@ -12,7 +12,7 @@ const articles = await getCollection("articles");
 ---
 
 <Layout title="Home">
-    <section class="flex justify-between items-center">
+    <section class="flex sm:flex-row flex-col gap-5 justify-between sm:items-center items-start">
         <Image
             width={1}
             height={1}
@@ -22,18 +22,18 @@ const articles = await getCollection("articles");
         />
 
         <div class="flex flex-col gap-2.5">
-            <div class="flex flex-col items-end">
-                <h1 class="text-400 font-bold">Hi there, I'm Hamdan</h1>
-                <h2 class="text-150 opacity-60">I’m a Fullstack developer focusing on Software Development.</h2>
+            <div class="flex flex-col sm:items-end items-start sm:text-end text-start">
+                <h1 class="sm:text-400 text-300 font-bold">Hi there, I'm Hamdan</h1>
+                <h2 class="opacity-60 sm:text-150">I’m a Fullstack developer focusing on Software Development.</h2>
             </div>
-            <div class="flex justify-end">
+            <div class="flex sm:justify-end justify-start">
                 <SocialMedia />
             </div>
         </div>
     </section>
 
     <section class="flex flex-col mt-16">
-        <h1 class="text-300 font-bold mb-5">My Projects</h1>
+        <h1 class="sm:text-300 text-200 font-bold mb-5">My Projects</h1>
         <div class="flex flex-col gap-5">
             {
                 projects.length !== 0 ? (
@@ -46,7 +46,7 @@ const articles = await getCollection("articles");
     </section>
 
     <section class="flex flex-col mt-16">
-        <h1 class="text-300 font-bold mb-5">My Articles</h1>
+        <h1 class="sm:text-300 text-200 font-bold mb-5">My Articles</h1>
         <div class="flex flex-col gap-5">
             {
                 articles.length !== 0 ? (
