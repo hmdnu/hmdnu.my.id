@@ -32,7 +32,7 @@
         </div>
     </div>
 </nav>
-<div class="flex flex-col gap-2.5 items-end right-0 transition-all">
+<div class="flex md:hidden flex-col gap-2.5 items-end right-0 transition-all">
     {#if toggle}
         {#each navItems as item}
             <a href={item.url} class="font-semibold text-100 hover:opacity-50">
