@@ -1,0 +1,87 @@
+---
+title: "How Computer runs your code"
+description : "How system's hardware works when executing a program, part of my learning from the CS:APP book."
+publishDate : 2025-07-11
+tags:
+  - ComputerScience
+  - cs:app
+  - DailyNote
+draft: false
+---
+
+### Introduction
+
+This article will be my documentation of learning from the CS:APP book as part of my goal to become a better programmer by learning low level systems. My goal from writing this article is to understand the concept from the book by expressing them in my own words so that others may also understand what being said on the book, I will cover the content chapter by chapter or subchapter  from the book. This is also my first time writing an article so I hope I can stay consistent and finish the book.
+
+## Hardware Organization of a System
+
+As a programmer, having basic understanding of how computer executes program is important to write better code, but many of todays programmer dont want to spend their time to learn how the systems work. So this article will cover some of the basic of how computer executes your code.
+
+## Computer's Hardware
+
+Computer's main hardware to execute program consist of 4 parts:
+- I/O devices
+- Buses
+- Main memory
+- Processor
+
+Each of the hardware run in order with instruction given by the system.
+
+Below is the example of the systems which execute simple ``hello.c`` program
+<figure>
+    <img
+        src="/public/assets/article/hardware-organization-of-a-system/figure-1.4.png"
+        alt="computer system"
+    />
+    <figcaption>Computer System</figcaption>
+</figure>
+
+
+## I/O Devices
+
+Input/output or simply I/O are device that connects to the system, there are four main I/O: keyboard, mouse, display, disk (HDD/SSD), each device connected to the bus by controllers or adapters.
+Controllers ae chip sets in the device it self or on the system's motherboard, while adapter is a card that plugs into the slot of motherboard. I/O devices are used to transfer information back and forth between the I/O bus or I/O device.
+
+## Buses
+
+Buses are running throughout the systems. these are collection of electrical conducts that carries chunk of data known as words that is fixed of bytes. Depends on the system's CPU architecture, it carries 4 (32-bit system) or 8 (64-bit system) bytes of data.
+
+## Main Memory
+
+Also simply called memory, is a temporary storage that holds data and program while the CPU is executing a program. Main memory consist of a collection of DRAM _(dynamic random access memory)_ chips, memory is organized with linear array data structure of bytes, each with its own unique address. The data of a variable in source code vary according to the types, for example in C program, data type `short` is 2 bytes, `int` and `float` are 4 bytes, `long` and `double` are 8 bytes.
+
+## Processor
+
+Processor or the CPU (Central Processing Unit) is the engine of the computer that interprets or executes instruction stored in the memory. There is word size storage device or register called the Program Counter (PC). By the time computer is on until it shuts down, CPU repeatedly executes instructions pointer by PC and updated the PC to point to the next instruction.
+
+CPU operates in simple instruction, though todays CPU can be very complex but the book's author states this is only a simplification for learning purpose. CPU has simple instruction defines by its instruction set architecture and executes in strict sequence, CPU executes a single instruction involves performing a series of steps.
+
+First CPU reads the instruction pointed by PC in the memory, then interprets the bits in the instruction so it can performs some simple operation dictated by the instruction, and then updates the PC to point to the next instruction, which might be or might not be placed next to each other in memory to the instruction that was just executed.
+
+## Running a `hello` Program
+
+Here is how this simple C program executed by the computer that has been compiled to binary file called `hello`, if you on windows it would be called `hello.exe`.
+
+```c
+#include <stdio.h>
+
+int main(){
+    printf("hello world\n");
+}
+```
+
+<figure>
+    <img
+        src="/public/assets/article/hardware-organization-of-a-system/figure-1.5.png"
+        alt="running hello program"
+    />
+    <figcaption>Running hello program</figcaption>
+</figure>
+
+
+Initially the binary file is stored in the disk, when user execute the binary file in the shell, it copies the code in the hello file to the memory from the disk with sequence of instruction. Using technique called DMA (Direct Memory Access) the data travels from disk to memory without passing through the CPU, once the code and the data are loaded in the memory, CPU begins executing the machine language in the binary file, it copies the bytes in the `hello world\n` string from memory to the register then display it on the screen.
+
+
+## What I Learned
+
+Computer executing simple code can be quite complex, it performs series of steps from various hardware to simply displaying a string. Compiled program executed from shell command wil travels via I/O bus to the memory from the disk without go through the CPU first, then the CPU will executes the machine code by copying the bytes from the code to the register and then display it on your computer's terminal.
