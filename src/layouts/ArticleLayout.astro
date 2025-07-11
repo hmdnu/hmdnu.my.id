@@ -45,9 +45,5 @@ const { article, slug } = Astro.props as Props;
     <article class="base-prose">
         <slot />
     </article>
-
     <Giscuss client:load />
-    <p class="mt-5 text-[14px] opacity-60">
-        The comment section will appears shortly, if you dont see any, please turn off the adblocker.
-    </p>
 </Layout>

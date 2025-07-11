@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import Layout from "./Layout.astro";
 import { type ProjectContent } from "@/types/project";
 import { icon } from "@/constants/icon";
+import Giscuss from "@/components/Giscuss.svelte";
 
 export type Props = {
     slug: ProjectContent;
@@ -58,6 +59,7 @@ const { slug } = Astro.props as Props;
             <div class="base-prose">
                 <slot />
             </div>
+            <Giscuss client:load />
         </div>
     </section>
 </Layout>

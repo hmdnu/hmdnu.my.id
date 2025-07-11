@@ -21,4 +21,10 @@
     });
 </script>
 
-<div id="giscus-container"></div>
+<div class="mt-20">
+    <h1 class="text-200 font-bold">Comments :</h1>
+    <div id="giscus-container"></div>
+    <p class="mt-5 text-[14px] opacity-60">
+        The comment section will appears shortly, if you dont see any, please turn off the adblocker.
+    </p>
+</div>
