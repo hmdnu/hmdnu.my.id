@@ -24,7 +24,11 @@ const { slug } = Astro.props as Props;
 
         <div class="mt-14 flex sm:flex-row flex-col-reverse gap-5 justify-between items-end">
             <div class="flex gap-2.5">
-                {slug.techStack.map((tech) => <label class="font-semibold">#{tech}</label>)}
+                {
+                    slug.techStack.map((tech) => (
+                        <span class="font-semibold bg-primary text-white px-2 py-1 rounded-md text-[14px]">{tech}</span>
+                    ))
+                }
             </div>
             <div class="flex flex-row gap-2.5 items-center">
                 {
