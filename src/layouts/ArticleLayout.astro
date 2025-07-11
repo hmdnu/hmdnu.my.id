@@ -1,8 +1,8 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Animate from "@/components/Animate.svelte";
 import type { ArticleContent } from "@/types/article";
 import { icon } from "@/constants/icon";
+import Giscuss from "@/components/Giscuss.svelte";
 
 export type Props = {
     article: ArticleContent;
@@ -45,4 +45,9 @@ const { article, slug } = Astro.props as Props;
     <article class="base-prose">
         <slot />
     </article>
+
+    <Giscuss client:load />
+    <p class="mt-5 text-[14px] opacity-60">
+        The comment section will appears shortly, if you dont see any, please turn off the adblocker.
+    </p>
 </Layout>
