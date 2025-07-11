@@ -5,7 +5,7 @@ import { social } from "@/constants/social";
 <div class="flex items-center gap-2.5">
     {
         social.map((item) => (
-            <a href={item.url}>
+            <a href={item.url} target="_blank">
                 <span class={`${item.icon}  size-6 opacity-60 hover:opacity-30`} />
             </a>
         ))

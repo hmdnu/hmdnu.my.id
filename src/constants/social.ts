@@ -4,7 +4,7 @@ export const social = [
   {
     name: "email",
     icon: icon.email,
-    url: "",
+    url: "mailto:hamdanubaidillah0306@gmail.com",
   },
   {
     name: "github",
@@ -14,7 +14,7 @@ export const social = [
   {
     name: "linkedin",
     icon: icon.linkedin,
-    url: "",
+    url: "https://www.linkedin.com/in/hamdan-ubaidillah-116b7a247",
   },
   {
     name: "instagram",
