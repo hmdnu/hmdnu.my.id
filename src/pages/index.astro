@@ -37,7 +37,12 @@ const articles = await getCollection("articles");
         <div class="flex flex-col gap-5">
             {
                 projects.length !== 0 ? (
-                    projects.slice(0, 2).map((project) => <ProjectCard {...project.data} slug={project.slug} />)
+                    projects
+                        .sort((a, b) => {
+                            return new Date(b.data.createdDate).getTime() - new Date(a.data.createdDate).getTime();
+                        })
+                        .slice(0, 2)
+                        .map((project) => <ProjectCard {...project.data} slug={project.slug} />)
                 ) : (
                     <Empty props="No projects yet" />
                 )
@@ -50,9 +55,14 @@ const articles = await getCollection("articles");
         <div class="flex flex-col gap-5">
             {
                 articles.length !== 0 ? (
-                    articles.slice(0, 2).map((article) => <ArticleCard {...article.data} slug={article.slug} />)
+                    articles
+                        .sort((a, b) => {
+                            return new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
+                        })
+                        .slice(0, 2)
+                        .map((article) => <ArticleCard {...article.data} slug={article.slug} />)
                 ) : (
-                    <Empty props="No articlles yet" />
+                    <Empty props="No articles yet" />
                 )
             }
         </div>

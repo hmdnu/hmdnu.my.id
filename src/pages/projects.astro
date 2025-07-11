@@ -9,17 +9,14 @@ const projects = await getCollection("projects");
 
 <Layout title="Projects">
     <h1 class="sm:text-300 text-200 font-bold mb-10">My Projects</h1>
+    <div class="flex flex-col gap-5"></div>
     {
         projects.length !== 0 ? (
-            projects.map((project, i) => (
-                <ProjectCard
-                    title={project.data.title}
-                    description={project.data.description}
-                    techStack={project.data.techStack}
-                    img={project.data.img}
-                    slug={project.slug}
-                />
-            ))
+            projects
+                .sort((a, b) => {
+                    return new Date(b.data.createdDate).getTime() - new Date(a.data.createdDate).getTime();
+                })
+                .map((project) => <ProjectCard {...project.data} slug={project.slug} />)
         ) : (
             <Empty props="No projects yet" />
         )

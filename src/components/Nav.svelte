@@ -1,6 +1,7 @@
 <script>
     import { icon } from "@/constants/icon";
     import { navItems } from "@/constants/nav";
+    import Theme from "./Theme.svelte";
 
     let toggle = false;
 
@@ -15,13 +16,18 @@
 
 <nav class="flex justify-between md:items-end items-center py-5 sticky top-0 bg-white z-50">
     <a href="/" class="text-300 font-bold hover:opacity-50">hmdnu</a>
-    <div class="md:flex hidden gap-5">
-        {#each navItems as item}
-            <a href={item.url} class="font-semibold text-100 hover:opacity-50">
-                {item.name}
-            </a>
-        {/each}
+    <div class="flex items-center gap-5">
+        <div class="md:flex hidden gap-5">
+            {#each navItems as item}
+                <a href={item.url} class="font-semibold text-100 hover:opacity-50">
+                    {item.name}
+                </a>
+            {/each}
+        </div>
+
+        <!-- <Theme /> -->
     </div>
+
     <div class="md:hidden flex">
         <div>
             <button

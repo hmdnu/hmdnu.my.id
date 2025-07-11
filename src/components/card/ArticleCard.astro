@@ -5,29 +5,34 @@ type Props = {
     description: string;
     publishDate: Date;
     tags: string[];
+    draft: boolean;
 };
 
-const { slug, title, description, publishDate, tags } = Astro.props;
+const { slug, title, description, publishDate, tags, draft } = Astro.props;
 ---
 
-<a
-    href={`/articles/${slug}`}
-    class="flex flex-col sm:flex-row gap-5 justify-between sm:items-end items-start hover:opacity-50"
->
-    <div>
-        <h1 class="text-200 font-bold mb-1.5">{title}</h1>
-        <h2 class="opacity-60 mb-1.5">{description}</h2>
-        <h2 class="opacity-60">
-            {
-                publishDate.toLocaleDateString("en-GB", {
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric",
-                })
-            }
-        </h2>
-    </div>
-    <div class="flex gap-1.5">
-        {tags.map((tag) => <h1 class="font-semibold">#{tag}</h1>)}
-    </div>
-</a>
+{
+    !draft ? (
+        <a
+            href={`/articles/${slug}`}
+            class="flex flex-col sm:flex-row gap-5 justify-between sm:items-end items-start hover:opacity-50"
+        >
+            <div>
+                <h1 class="text-200 font-bold mb-1.5">{title}</h1>
+                <h2 class="opacity-60 mb-1.5">{description}</h2>
+                <h2 class="opacity-60">
+                    {publishDate.toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                    })}
+                </h2>
+            </div>
+            <div class="flex gap-1.5">
+                {tags.map((tag) => (
+                    <h1 class="font-semibold">#{tag}</h1>
+                ))}
+            </div>
+        </a>
+    ) : null
+}

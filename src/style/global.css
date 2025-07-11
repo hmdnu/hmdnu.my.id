@@ -15,6 +15,12 @@
     --text-500: 2.25rem; /* 36px */
 }
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@utility base-prose {
+    @apply prose prose-p:text-primary prose-headings:text-primary sm:text-100 text-[14px] max-w-none;
+}
+
 * {
     @apply transition;
 }
