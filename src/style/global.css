@@ -18,7 +18,10 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @utility base-prose {
-    @apply prose prose-p:text-primary prose-headings:text-primary sm:text-100 text-[14px] max-w-none;
+    @apply prose text-primary prose-headings:text-primary prose-p:text-primary prose-ul:text-primary
+    prose-ol:text-primary prose-li:text-primary prose-strong:text-primary
+    prose-em:text-primary prose-a:text-primary prose-code:text-primary prose-blockquote:text-primary
+    prose-th:text-primary prose-td:text-primary max-w-none sm:text-100 text-[14px];
 }
 
 * {
