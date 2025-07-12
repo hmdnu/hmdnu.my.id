@@ -3,46 +3,49 @@ import "@/style/global.css";
 import SocialMedia from "@/components/SocialMedia.astro";
 import { ClientRouter } from "astro:transitions";
 import Nav from "@/components/Nav.svelte";
+import SEO, { type Props as SEOProps } from "@/components/SEO.astro";
 
-type Props = {
-    title: string;
+export type Props = {
+  seo: SEOProps;
 };
 
-const { title } = Astro.props;
+const { seo } = Astro.props;
 ---
 
 <html lang="en" data-theme="light">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="/logo.png" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <ClientRouter />
-        <title>{title ?? "hmdnu"}</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap"
-            rel="stylesheet"
-        />
-    </head>
-    <body class="text-primary font-primary w-[60%] max-lg:w-[80%] max-sm:w-[90%] mx-auto bg-white dark:bg-primary">
-        <Nav client:load />
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <SEO {...seo} />
+    <ClientRouter />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="text-primary font-primary w-[60%] max-lg:w-[80%] max-sm:w-[90%] mx-auto bg-white dark:bg-primary"
+  >
+    <Nav client:load />
 
-        <main class="mt-16 mb-5">
-            <slot />
-            <footer class="mt-16 flex items-center justify-between">
-                <div>
-                    <SocialMedia />
-                </div>
-                <h1 class="text-[14px] opacity-60">
-                    ©{new Date().getFullYear()} · Made with <a
-                        href="https://astro.build/"
-                        target="_blank"
-                        class="text-orange-500 font-semibold hover:underline">Astro</a
-                    >
-                </h1>
-            </footer>
-        </main>
-    </body>
+    <main class="mt-16 mb-5">
+      <slot />
+      <footer class="mt-16 flex items-center justify-between">
+        <div>
+          <SocialMedia />
+        </div>
+        <h1 class="text-[14px] opacity-60">
+          ©{new Date().getFullYear()} · Made with <a
+            href="https://astro.build/"
+            target="_blank"
+            class="text-orange-500 font-semibold hover:underline">Astro</a
+          >
+        </h1>
+      </footer>
+    </main>
+  </body>
 </html>

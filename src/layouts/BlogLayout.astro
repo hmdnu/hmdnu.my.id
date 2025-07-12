@@ -5,45 +5,57 @@ import { icon } from "@/constants/icon";
 import Giscuss from "@/components/Giscuss.svelte";
 
 export type Props = {
-    blog: BlogContent;
-    slug: string;
+  blog: BlogContent;
+  slug: string;
 };
 
 const { blog, slug } = Astro.props as Props;
 ---
 
-<Layout title={blog.title}>
-    <div class="mb-5 flex sm:flex-row flex-col justify-between sm:items-end items-start gap-2">
-        <div class="flex-1/2">
-            <h1 class="sm:text-300 text-200 font-bold mb-1.5">{blog.title}</h1>
-            <p class="opacity-60 mb-1.5 sm:text-100 text-[14px]">{blog.description}</p>
-            <h2 class="opacity-60 sm:text-100 text-[14px]">
-                Posted on
-                {
-                    blog.publishDate.toLocaleDateString("en-GB", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                    })
-                }
-            </h2>
-        </div>
-        <a
-            href={`https://github.com/hmdnu/hamdanu.my.id/blob/main/src/content/articles/${slug}.mdx`}
-            class="flex items-center gap-1.5 w-fit hover:opacity-50 sm:text-100 text-[14px]"
-            target="_blank"
-        >
-            <span class={`${icon.edit} sm:size-5 size-4`}></span>
-            <h1 class="font-semibold">Request an edit</h1>
-        </a>
+<Layout
+  seo={{
+    isBlog: true,
+    title: blog.title,
+    description: blog.description,
+    keywords: blog.tags,
+    publishDate: blog.publishDate.toISOString(),
+  }}
+>
+  <div
+    class="mb-5 flex sm:flex-row flex-col justify-between sm:items-end items-start gap-2"
+  >
+    <div class="flex-1/2">
+      <h1 class="sm:text-300 text-200 font-bold mb-1.5">{blog.title}</h1>
+      <p class="opacity-60 mb-1.5 sm:text-100 text-[14px]">
+        {blog.description}
+      </p>
+      <h2 class="opacity-60 sm:text-100 text-[14px]">
+        Posted on
+        {
+          blog.publishDate.toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          })
+        }
+      </h2>
     </div>
+    <a
+      href={`https://github.com/hmdnu/hamdanu.my.id/blob/main/src/content/articles/${slug}.mdx`}
+      class="flex items-center gap-1.5 w-fit hover:opacity-50 sm:text-100 text-[14px]"
+      target="_blank"
+    >
+      <span class={`${icon.edit} sm:size-5 size-4`}></span>
+      <h1 class="font-semibold">Request an edit</h1>
+    </a>
+  </div>
 
-    <div class="flex gap-2.5 mb-20">
-        {blog.tags.map((tag) => <label class="font-medium">#{tag}</label>)}
-    </div>
+  <div class="flex gap-2.5 mb-20">
+    {blog.tags.map((tag) => <label class="font-medium">#{tag}</label>)}
+  </div>
 
-    <article class="base-prose">
-        <slot />
-    </article>
-    <Giscuss client:load />
+  <article class="base-prose">
+    <slot />
+  </article>
+  <Giscuss client:load />
 </Layout>

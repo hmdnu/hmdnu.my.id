@@ -12,59 +12,75 @@ const blogs = await getCollection("blogs");
 ---
 
 <Layout title="Home">
-    <section class="flex sm:flex-row flex-col gap-5 justify-between sm:items-center items-start">
-        <Image
-            width={1}
-            height={1}
-            src="https://avatars.githubusercontent.com/u/68896885?v=4"
-            alt="hmdnu"
-            class="size-40 rounded-full object-cover"
-        />
+  <section
+    class="flex sm:flex-row flex-col gap-5 justify-between sm:items-center items-start"
+  >
+    <Image
+      width={1}
+      height={1}
+      src="https://avatars.githubusercontent.com/u/68896885?v=4"
+      alt="hmdnu"
+      class="size-40 rounded-full object-cover"
+    />
 
-        <div class="flex flex-col gap-2.5">
-            <div class="flex flex-col sm:items-end items-start sm:text-end text-start">
-                <h1 class="sm:text-400 text-300 font-bold">Hi there, I'm Hamdan</h1>
-                <h2 class="opacity-60 sm:text-150">I’m a Fullstack developer focusing on Software Development.</h2>
-            </div>
-            <div class="flex sm:justify-end justify-start">
-                <SocialMedia />
-            </div>
-        </div>
-    </section>
+    <div class="flex flex-col gap-2.5">
+      <div
+        class="flex flex-col sm:items-end items-start sm:text-end text-start"
+      >
+        <h1 class="sm:text-400 text-300 font-bold">Hi there, I'm Hamdan</h1>
+        <h2 class="opacity-60 sm:text-150">
+          I’m a Fullstack developer focusing on Software Development.
+        </h2>
+      </div>
+      <div class="flex sm:justify-end justify-start">
+        <SocialMedia />
+      </div>
+    </div>
+  </section>
 
-    <section class="flex flex-col mt-16">
-        <h1 class="sm:text-300 text-200 font-bold mb-5">My Projects</h1>
-        <div class="flex flex-col gap-5">
-            {
-                projects.length !== 0 ? (
-                    projects
-                        .sort((a, b) => {
-                            return new Date(b.data.createdDate).getTime() - new Date(a.data.createdDate).getTime();
-                        })
-                        .slice(0, 2)
-                        .map((project) => <ProjectCard {...project.data} slug={project.slug} />)
-                ) : (
-                    <Empty props="No projects yet" />
-                )
-            }
-        </div>
-    </section>
+  <section class="flex flex-col mt-16">
+    <h1 class="sm:text-300 text-200 font-bold mb-5">My Projects</h1>
+    <div class="flex flex-col gap-5">
+      {
+        projects.length !== 0 ? (
+          projects
+            .sort((a, b) => {
+              return (
+                new Date(b.data.createdDate).getTime() -
+                new Date(a.data.createdDate).getTime()
+              );
+            })
+            .slice(0, 2)
+            .map((project) => (
+              <ProjectCard {...project.data} slug={project.slug} />
+            ))
+        ) : (
+          <Empty props="No projects yet" />
+        )
+      }
+    </div>
+  </section>
 
-    <section class="flex flex-col mt-16">
-        <h1 class="sm:text-300 text-200 font-bold mb-5">My Blogs</h1>
-        <div class="flex flex-col gap-5">
-            {
-                blogs.length !== 0 ? (
-                    blogs
-                        .sort((a, b) => {
-                            return new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
-                        })
-                        .slice(0, 2)
-                        .map((article) => <BlogCard {...article.data} slug={article.slug} />)
-                ) : (
-                    <Empty props="No posts yet" />
-                )
-            }
-        </div>
-    </section>
+  <section class="flex flex-col mt-16">
+    <h1 class="sm:text-300 text-200 font-bold mb-5">My Blogs</h1>
+    <div class="flex flex-col gap-5">
+      {
+        blogs.length !== 0 ? (
+          blogs
+            .sort((a, b) => {
+              return (
+                new Date(b.data.publishDate).getTime() -
+                new Date(a.data.publishDate).getTime()
+              );
+            })
+            .slice(0, 2)
+            .map((article) => (
+              <BlogCard {...article.data} slug={article.slug} />
+            ))
+        ) : (
+          <Empty props="No posts yet" />
+        )
+      }
+    </div>
+  </section>
 </Layout>
