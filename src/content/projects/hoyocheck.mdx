@@ -1,0 +1,15 @@
+---
+title: Hoyocheck API
+description: Simple API for daily checking rewards from Hoyoverse's games
+techStack:
+  - Typescript
+  - Hono.js
+source: https://github.com/hmdnu/hoyocheck-api?tab=readme-ov-file#readme
+demo: null
+img: /assets/project/hoyocheck-api.png
+createdDate: 2024-09-12
+---
+
+Simple API for checking rewards on Hoyolab's website, this was made because i always forgot to do daily checking of Hoyolab's to get the rewards so i made this. This works by targeting Hoyolab's API endpoint and make HTTP post request using user's id and token id. This was not meant for public use but rather personal because in order to works you must use your Hoyolab's credential, this API just simply sending post request to Hoyolab thats it, you can fork the repo and use it as your own to make automation for example using it to interact with your discord bot and sends notification.
+
+This was built with `Typescript` why? its easy to develop and host and Javascript is sucks when it comes to type checking. I use `Hono` as the framework, its simple just like `Express.js` but also comes with better performance, batteries included, and good DX also built on Web Standards for Cloudflare workers.
