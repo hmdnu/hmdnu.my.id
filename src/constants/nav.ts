@@ -5,8 +5,8 @@ export const navItems = [
   },
 
   {
-    name: "Articles",
-    url: "/articles",
+    name: "Blogs",
+    url: "/blogs",
   },
   {
     name: "About",

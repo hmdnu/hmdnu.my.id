@@ -1,26 +1,26 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import type { ArticleContent } from "@/types/article";
+import type { BlogContent } from "@/types/blog";
 import { icon } from "@/constants/icon";
 import Giscuss from "@/components/Giscuss.svelte";
 
 export type Props = {
-    article: ArticleContent;
+    blog: BlogContent;
     slug: string;
 };
 
-const { article, slug } = Astro.props as Props;
+const { blog, slug } = Astro.props as Props;
 ---
 
-<Layout title={article.title}>
+<Layout title={blog.title}>
     <div class="mb-5 flex sm:flex-row flex-col justify-between sm:items-end items-start gap-2">
         <div class="flex-1/2">
-            <h1 class="sm:text-300 text-200 font-bold mb-1.5">{article.title}</h1>
-            <p class="opacity-60 mb-1.5 sm:text-100 text-[14px]">{article.description}</p>
+            <h1 class="sm:text-300 text-200 font-bold mb-1.5">{blog.title}</h1>
+            <p class="opacity-60 mb-1.5 sm:text-100 text-[14px]">{blog.description}</p>
             <h2 class="opacity-60 sm:text-100 text-[14px]">
                 Posted on
                 {
-                    article.publishDate.toLocaleDateString("en-GB", {
+                    blog.publishDate.toLocaleDateString("en-GB", {
                         day: "numeric",
                         month: "long",
                         year: "numeric",
@@ -39,7 +39,7 @@ const { article, slug } = Astro.props as Props;
     </div>
 
     <div class="flex gap-2.5 mb-20">
-        {article.tags.map((tag) => <label class="font-medium">#{tag}</label>)}
+        {blog.tags.map((tag) => <label class="font-medium">#{tag}</label>)}
     </div>
 
     <article class="base-prose">

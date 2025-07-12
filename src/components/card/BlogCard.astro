@@ -14,7 +14,7 @@ const { slug, title, description, publishDate, tags, draft } = Astro.props;
 {
     !draft ? (
         <a
-            href={`/articles/${slug}`}
+            href={`/blogs/${slug}`}
             class="flex flex-col sm:flex-row gap-5 justify-between sm:items-end items-start hover:opacity-50"
         >
             <div>

@@ -1,24 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import ArticleCard from "@/components/card/ArticleCard.astro";
+import BlogCard from "@/components/card/BlogCard.astro";
 import Empty from "@/components/Empty.astro";
 
-const articles = await getCollection("articles");
+const blogs = await getCollection("blogs");
 ---
 
-<Layout title="Articles">
-    <h1 class="sm:text-300 text-200 font-bold mb-10">My Articles</h1>
+<Layout title="Blogs">
+    <h1 class="sm:text-300 text-200 font-bold mb-10">My Blogs</h1>
     <div class="flex flex-col gap-5">
         {
-            articles.length !== 0 ? (
-                articles
+            blogs.length !== 0 ? (
+                blogs
                     .sort((a, b) => {
                         return new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
                     })
-                    .map((article) => <ArticleCard {...article.data} slug={article.slug} />)
+                    .map((blog) => <BlogCard {...blog.data} slug={blog.slug} />)
             ) : (
-                <Empty props="No articles yet" />
+                <Empty props="No posts yet" />
             )
         }
     </div>
