@@ -1,0 +1,39 @@
+---
+title : Why Do We Need Cache?
+description : Brief explanation on why caches matter, day 2 of learing from CS:APP book.
+publishDate : 2025-07-12
+tags :
+  - ComputerScience
+  - cs:app
+  - DailyNote
+draft : false
+---
+
+A lot of people have heard of cache, but many of them dont understand what it is, most importantly in programming world. When someone told beginner developer what a cache is they mostly reply with **"its a temporary storage for later use"**, or they simply dont know. Well in a nutshell cache is a temporary storage, but why we need a cache? and why cache makes thing faster? This blog will give brief explanation on why we need cache and how cache works in low level perspective as I've been learning from _Computer Systems: A Programmer's Perspective_ (CAS:APP).
+
+## Caches Improve Speed
+
+We all know that some storage device are larger than the other in size, and much faster in speed, for example HDD is much slower than SSD but HDD can holds more data and less expensive in price, meanwhile memory is less smaller than SSD and much faster, but did you know that there is another storage device that is 100 times faster than a memory? its the processor's register. Register is a storage that holds data before it goes to _Arithmetic Logic Unit_ (ALU), the processor responsible to interpreting or executes instruction that given when the computer starts until it shuts down.
+
+In order to make things faster system designer designed smaller faster storage device called cache memory or just simply caches that serves as temporary storage the processor might need in the near future. An L1 (level 1) cache on the processor can holds 10.000 bytes of data and can be accessed as fast as register, a larger L2 (level 2) processor can holds much larger data that contain 100 - 1 million bytes, but can take 5 times longer to process, however its still much faster than memory. The L1 and L2 caches are implemented with a hardware technology called _Static Random Memory_ (SRAM), newer system can have more of this cache level storage.
+
+## Why Caches Matter
+
+The machine code that has been compiled are stored in the disk when program runs it then copied to main memory and the copied again to register and eventually copied to the display. This operation happens every time computer turns on until it shuts down for a very long time, this will slow down the "real work" of the code's performance by programmer's perspective.
+
+## Hierarchy of Storage
+
+This notion of inserting a smaller and faster storage (e.g., cache) between main memory and processor turns out to be a general idea, in fact storage devices form a hierarchy as it shown on the picture below
+
+<figure>
+    <img
+        src="/assets/blog/why-do-we-need-cache/storage-hierarchy.png"
+        alt="Hierarchy of Storage"
+    />
+    <figcaption>Hierarchy of Storage</figcaption>
+</figure>
+
+The main idea of this hierarchy is that storage at one level serves as cache for next lower level storage. Here in the picture, main memory (DRAM) serves as a cache for local disk, and L3 cache (SRAM) serves as cache for main memory and it goes on.
+
+### Closing
+This blog written in purpose to documents my understanding in learning low level system by the book CS:APP.
