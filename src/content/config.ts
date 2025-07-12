@@ -17,7 +17,7 @@ const projects = defineCollection({
     techStack: z.array(z.string()),
     source: z.string().url().nullable(),
     demo: z.string().url().nullable(),
-    img: z.string(),
+    img: z.string().nullable(),
     createdDate: z.coerce.date(),
   }),
 });
