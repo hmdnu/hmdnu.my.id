@@ -11,7 +11,11 @@ const projects = await getCollection("projects");
 const blogs = await getCollection("blogs");
 ---
 
-<Layout title="Home">
+<Layout
+  seo={{
+    title: "Home",
+  }}
+>
   <section
     class="flex sm:flex-row flex-col gap-5 justify-between sm:items-center items-start"
   >
