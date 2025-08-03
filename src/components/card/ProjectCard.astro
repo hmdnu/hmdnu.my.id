@@ -20,7 +20,9 @@ const { title, description, techStack, slug } = Astro.props;
     <div class="flex gap-1.5">
         {
             techStack.map((tech) => (
-                <span class="font-semibold bg-primary text-white px-2 py-1 rounded-md text-[14px]">{tech}</span>
+                <span class="font-semibold bg-primary text-white dark:bg-white dark:text-primary px-2 py-1 rounded-md text-[14px]">
+                    {tech}
+                </span>
             ))
         }
     </div>
