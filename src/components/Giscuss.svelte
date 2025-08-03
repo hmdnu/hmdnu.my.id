@@ -2,6 +2,11 @@
     import { onMount } from "svelte";
 
     onMount(() => {
+        const theme =
+            document.documentElement.attributes.getNamedItem(
+                "data-theme",
+            )?.value;
+
         const script = document.createElement("script");
         script.src = "https://giscus.app/client.js";
         script.setAttribute("data-repo", "hmdnu/hmdnu.my.id");
@@ -13,7 +18,10 @@
         script.setAttribute("data-reactions-enabled", "1");
         script.setAttribute("data-emit-metadata", "0");
         script.setAttribute("data-input-position", "top");
-        script.setAttribute("data-theme", "light");
+        script.setAttribute(
+            "data-theme",
+            `${theme === "dark" ? "gruvbox_dark" : "light"}`,
+        );
         script.setAttribute("data-lang", "en");
         script.setAttribute("crossorigin", "anonymous");
         script.async = true;
@@ -25,6 +33,7 @@
     <h1 class="text-200 font-bold">Comments :</h1>
     <div id="giscus-container"></div>
     <p class="mt-5 text-[14px] opacity-60">
-        The comment section will appears shortly, if you dont see any, please turn off the adblocker.
+        The comment section will appears shortly, if you dont see any, please
+        turn off the adblocker.
     </p>
 </div>

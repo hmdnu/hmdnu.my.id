@@ -14,18 +14,22 @@
     }
 </script>
 
-<nav class="flex justify-between md:items-end items-center py-5 sticky top-0 bg-white z-50">
+<nav
+    class="flex justify-between md:items-end items-center py-5 sticky top-0 bg-white dark:bg-primary z-50"
+>
     <a href="/" class="text-300 font-bold hover:opacity-50">hmdnu</a>
     <div class="flex items-center gap-5">
-        <div class="md:flex hidden gap-5">
+        <div class="md:flex hidden items-center gap-5">
             {#each navItems as item}
-                <a href={item.url} class="font-semibold text-100 hover:opacity-50">
+                <a
+                    href={item.url}
+                    class="font-semibold text-100 hover:opacity-50"
+                >
                     {item.name}
                 </a>
             {/each}
+            <Theme />
         </div>
-
-        <!-- <Theme /> -->
     </div>
 
     <div class="md:hidden flex">
@@ -38,6 +42,7 @@
         </div>
     </div>
 </nav>
+
 <div class="flex md:hidden flex-col gap-2.5 items-end right-0 transition-all">
     {#if toggle}
         {#each navItems as item}
@@ -46,4 +51,5 @@
             </a>
         {/each}
     {/if}
+    <Theme />
 </div>

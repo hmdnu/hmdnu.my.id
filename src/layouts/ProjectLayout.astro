@@ -6,85 +6,89 @@ import { icon } from "@/constants/icon";
 import Giscuss from "@/components/Giscuss.svelte";
 
 export type Props = {
-  slug: ProjectContent;
+    slug: ProjectContent;
 };
 
 const { slug } = Astro.props as Props;
 ---
 
 <Layout
-  seo={{
-    title: slug.title,
-    description: slug.description,
-  }}
+    seo={{
+        title: slug.title,
+        description: slug.description,
+    }}
 >
-  <section>
-    <div>
-      <Image
-        src={slug.img || "/assets/default-project-header.jpeg"}
-        alt={slug.title}
-        width={1}
-        height={1}
-        class="card mb-5 border border-gray-300 rounded-md w-full h-full"
-      />
-      {
-        !slug.img ? (
-          <a
-            href="https://x.com/thebagelchan"
-            class="text-[14px] opacity-60 font-medium hover:text-blue-500 italic"
-            target="_blank"
-          >
-            Art source : https://x.com/thebagelchan
-          </a>
-        ) : null
-      }
-    </div>
-    <div
-      class="mt-14 flex sm:flex-row flex-col-reverse gap-5 justify-between items-end"
-    >
-      <div class="flex gap-2.5">
-        {
-          slug.techStack.map((tech) => (
-            <span class="font-semibold bg-primary text-white px-2 py-1 rounded-md text-[14px]">
-              {tech}
-            </span>
-          ))
-        }
-      </div>
-      <div class="flex flex-row gap-2.5 items-center">
-        {
-          slug.source ? (
-            <a
-              href={slug.source}
-              class="flex items-center gap-1.5 bg-[#333] rounded-md px-4 py-2 hover:opacity-50"
-              target="_blank"
-            >
-              <span class={`${icon.github} size-6 text-white`} />
-              <h1 class="font-semibold text-white">Source</h1>
-            </a>
-          ) : null
-        }
-        {
-          slug.demo ? (
-            <a
-              href={slug.demo}
-              class="flex items-center gap-1.5 border border-gray-400 rounded-md px-4 py-2 hover:opacity-50"
-              target="_blank"
-            >
-              <span class={`${icon.web} size-6`} />
-              <h1 class="font-semibold">Demo</h1>
-            </a>
-          ) : null
-        }
-      </div>
-    </div>
+    <section>
+        <div>
+            <Image
+                src={slug.img || "/assets/default-project-header.jpeg"}
+                alt={slug.title}
+                width={1}
+                height={1}
+                class="card mb-5 border border-gray-300 rounded-md w-full h-full"
+            />
+            {
+                !slug.img ? (
+                    <a
+                        href="https://x.com/thebagelchan"
+                        class="text-[14px] opacity-60 font-medium hover:text-blue-500 italic"
+                        target="_blank"
+                    >
+                        Art source : https://x.com/thebagelchan
+                    </a>
+                ) : null
+            }
+        </div>
+        <div
+            class="mt-14 flex sm:flex-row flex-col-reverse gap-5 justify-between items-end"
+        >
+            <div class="flex gap-2.5">
+                {
+                    slug.techStack.map((tech) => (
+                        <span class="font-semibold bg-primary dark:bg-white text-white dark:text-primary px-2 py-1 rounded-md text-[14px]">
+                            {tech}
+                        </span>
+                    ))
+                }
+            </div>
+            <div class="flex flex-row gap-2.5 items-center">
+                {
+                    slug.source ? (
+                        <a
+                            href={slug.source}
+                            class="flex items-center gap-1.5 bg-[#333] dark:bg-white rounded-md px-4 py-2 hover:opacity-50"
+                            target="_blank"
+                        >
+                            <span
+                                class={`${icon.github} size-6 text-white dark:bg-primary`}
+                            />
+                            <h1 class="font-semibold text-white dark:text-primary">
+                                Source
+                            </h1>
+                        </a>
+                    ) : null
+                }
+                {
+                    slug.demo ? (
+                        <a
+                            href={slug.demo}
+                            class="flex items-center gap-1.5 border border-gray-400 rounded-md px-4 py-2 hover:opacity-50"
+                            target="_blank"
+                        >
+                            <span class={`${icon.web} size-6`} />
+                            <h1 class="font-semibold">Demo</h1>
+                        </a>
+                    ) : null
+                }
+            </div>
+        </div>
 
-    <div class="mt-14">
-      <h1 class="text-300 font-bold mb-5">{slug.title}</h1>
-      <div class="base-prose">
-        <slot />
-      </div>
-      <Giscuss client:load />
-    </div>
-  </section>
+        <div class="mt-14">
+            <h1 class="text-300 font-bold mb-5">{slug.title}</h1>
+            <div class="base-prose">
+                <slot />
+            </div>
+            <Giscuss client:load />
+        </div>
+    </section>
 </Layout>

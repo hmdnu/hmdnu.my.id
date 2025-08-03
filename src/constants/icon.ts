@@ -18,8 +18,7 @@ export const icon = {
   web: "icon-[streamline-plump--web]",
   edit: "icon-[lucide--edit]",
   menu: "icon-[ep--menu]",
-  darkMode: "icon-[material-symbols--dark-mode]",
-  lightMode: "icon-[si--light-mode-fill]",
+  theme: "icon-[fluent--dark-theme-24-regular]",
 } as const;
 
 export const iconKeys = Object.keys(icon) as Array<keyof typeof icon>;

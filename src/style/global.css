@@ -18,10 +18,35 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @utility base-prose {
-    @apply prose text-primary prose-headings:text-primary prose-p:text-primary prose-ul:text-primary
-    prose-ol:text-primary prose-li:text-primary prose-strong:text-primary
-    prose-em:text-primary prose-a:text-primary prose-code:text-primary prose-blockquote:text-primary
-    prose-th:text-primary prose-td:text-primary max-w-none sm:text-100 text-[14px];
+    @apply prose text-primary
+    prose-headings:text-primary
+    prose-p:text-primary
+    prose-ul:text-primary
+    prose-ol:text-primary
+    prose-li:text-primary
+    prose-strong:text-primary
+    prose-em:text-primary
+    prose-a:text-primary
+    prose-code:text-primary
+    prose-blockquote:text-primary
+    prose-th:text-primary
+    prose-td:text-primary
+    max-w-none
+    sm:text-100
+    text-[14px]
+
+    dark:prose-headings:text-white
+    dark:prose-p:text-white
+    dark:prose-ul:text-white
+    dark:prose-ol:text-white
+    dark:prose-li:text-white
+    dark:prose-strong:text-white
+    dark:prose-em:text-white
+    dark:prose-a:text-white
+    dark:prose-code:text-white
+    dark:prose-blockquote:text-white
+    dark:prose-th:text-white
+    dark:prose-td:text-white;
 }
 
 * {
