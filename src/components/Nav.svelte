@@ -15,7 +15,7 @@
 </script>
 
 <nav
-    class="flex justify-between md:items-end items-center py-5 sticky top-0 bg-white dark:bg-primary z-50"
+    class="flex justify-between md:items-center items-center py-5 sticky top-0 bg-white dark:bg-primary z-50"
 >
     <a href="/" class="text-300 font-bold hover:opacity-50">hmdnu</a>
     <div class="flex items-center gap-5">
@@ -32,14 +32,13 @@
         </div>
     </div>
 
-    <div class="md:hidden flex">
-        <div>
-            <button
-                on:click={handleOpenNav}
-                class={`${icon.menu} size-6 hover:cursor-pointer ${!toggle ? "text-primary" : "text-slate-300"}`}
-                aria-label="menu"
-            ></button>
-        </div>
+    <div class="md:hidden flex items-center gap-2.5">
+        <Theme />
+        <button
+            on:click={handleOpenNav}
+            class={`${icon.menu} size-6 hover:cursor-pointer ${!toggle ? "text-primary dark:text-white" : "text-slate-300"}`}
+            aria-label="menu"
+        ></button>
     </div>
 </nav>
 
@@ -51,5 +50,4 @@
             </a>
         {/each}
     {/if}
-    <Theme />
 </div>
