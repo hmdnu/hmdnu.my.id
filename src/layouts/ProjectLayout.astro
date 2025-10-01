@@ -26,6 +26,7 @@ const { slug } = Astro.props as Props;
                 width={1}
                 height={1}
                 class="card mb-5 border border-gray-300 rounded-md w-full h-full"
+                loading="lazy"
             />
             {
                 !slug.img ? (
