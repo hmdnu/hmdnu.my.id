@@ -21,4 +21,9 @@ export const social = [
     icon: icon.instagram,
     url: "https://instagram.com/hmdnubaidillah",
   },
+  {
+    name: "facebook",
+    icon: icon.facebook,
+    url: "https://web.facebook.com/dhaniuyan",
+  },
 ] as const;

@@ -19,6 +19,7 @@ export const icon = {
   edit: "icon-[lucide--edit]",
   menu: "icon-[ep--menu]",
   theme: "icon-[fluent--dark-theme-24-regular]",
+  facebook: "icon-[ic--baseline-facebook]",
 } as const;
 
 export const iconKeys = Object.keys(icon) as Array<keyof typeof icon>;
