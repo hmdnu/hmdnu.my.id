@@ -2,7 +2,9 @@
 import BlogCard from "@/components/card/BlogCard.astro";
 import ProjectCard from "@/components/card/ProjectCard.astro";
 import Empty from "@/components/Empty.astro";
+import WorkExperienceSection from "@/components/sections/WorkExperienceSection.astro";
 import SocialMedia from "@/components/SocialMedia.astro";
+import { workExperiences } from "@/data/workExperience";
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
@@ -12,91 +14,107 @@ const blogs = await getCollection("blogs");
 ---
 
 <Layout
-  seo={{
-    title: "Home",
-  }}
+    seo={{
+        title: "Home",
+    }}
 >
-  <section
-    class="flex sm:flex-row flex-col gap-5 justify-between sm:items-center items-start"
-  >
-    <Image
-      width={1}
-      height={1}
-      src="https://avatars.githubusercontent.com/u/68896885?v=4"
-      alt="hmdnu"
-      class="size-40 rounded-full object-cover"
-      loading="lazy"
-    />
-
-    <div class="flex flex-col gap-2.5">
-      <div
-        class="flex flex-col sm:items-end items-start sm:text-end text-start"
-      >
-        <h1 class="sm:text-400 text-300 font-bold">Hi there, I'm Hamdan</h1>
-        <h2 class="opacity-60 sm:text-150">
-          I’m a Fullstack developer focusing on Software Development and Open
-          Source Enthusiast.
-        </h2>
-      </div>
-      <div class="flex sm:justify-end justify-start">
-        <SocialMedia />
-      </div>
-    </div>
-  </section>
-
-  <section class="flex flex-col mt-16">
-    <h1 class="sm:text-300 text-200 font-bold mb-5">My Projects</h1>
-    <div class="flex flex-col gap-5">
-      {
-        projects.length !== 0 ? (
-          projects
-            .sort((a, b) => {
-              return (
-                new Date(b.data.createdDate).getTime() -
-                new Date(a.data.createdDate).getTime()
-              );
-            })
-            .slice(0, 2)
-            .map((project) => (
-              <ProjectCard {...project.data} slug={project.slug} />
-            ))
-        ) : (
-          <Empty props="No projects yet" />
-        )
-      }
-    </div>
-    <a
-      href="/projects"
-      class="text-[14px] sm:text-100 font-semibold mt-5 hover:opacity-50"
-      >See More...</a
+    <section
+        class="flex sm:flex-row flex-col gap-5 justify-between sm:items-center items-start"
     >
-  </section>
+        <Image
+            width={1}
+            height={1}
+            src="https://avatars.githubusercontent.com/u/68896885?v=4"
+            alt="hmdnu"
+            class="size-40 rounded-full object-cover"
+            loading="lazy"
+        />
 
-  <section class="flex flex-col mt-16">
-    <h1 class="sm:text-300 text-200 font-bold mb-5">My Blogs</h1>
-    <div class="flex flex-col gap-5">
-      {
-        blogs.length !== 0 ? (
-          blogs
-            .sort((a, b) => {
-              return (
-                new Date(b.data.publishDate).getTime() -
-                new Date(a.data.publishDate).getTime()
-              );
-            })
-            .slice(0, 2)
-            .map((article) => (
-              <BlogCard {...article.data} slug={article.slug} />
-            ))
-        ) : (
-          <Empty props="No posts yet" />
-        )
-      }
-    </div>
-    <a
-      href="/blog"
-      class="text-[14px] sm:text-100 font-semibold mt-5 hover:opacity-50"
-      >See More...</a
-    >
-  </section>
+        <div class="flex flex-col gap-2.5">
+            <div
+                class="flex flex-col sm:items-end items-start sm:text-end text-start"
+            >
+                <h1 class="sm:text-400 text-300 font-bold">
+                    Hi there, I'm Hamdan
+                </h1>
+                <h2 class="opacity-60 sm:text-150">
+                    I’m a Fullstack developer focusing on Software Development
+                    and an Open Source Enthusiast.
+                </h2>
+            </div>
+            <div class="flex sm:justify-end justify-start">
+                <SocialMedia />
+            </div>
+        </div>
+    </section>
+
+    <section class="flex flex-col mt-16">
+        <h1 class="sm:text-300 text-200 font-bold mb-5">Work Experience</h1>
+        <div class="flex flex-col gap-5 justify-center">
+            {
+                workExperiences.map((workExperience) => (
+                    <WorkExperienceSection workExperience={workExperience} />
+                ))
+            }
+        </div>
+    </section>
+
+    <section class="flex flex-col mt-16">
+        <h1 class="sm:text-300 text-200 font-bold mb-5">Personal Projects</h1>
+        <div class="flex flex-col gap-5">
+            {
+                projects.length !== 0 ? (
+                    projects
+                        .sort((a, b) => {
+                            return (
+                                new Date(b.data.createdDate).getTime() -
+                                new Date(a.data.createdDate).getTime()
+                            );
+                        })
+                        .slice(0, 2)
+                        .map((project) => (
+                            <ProjectCard
+                                {...project.data}
+                                slug={project.slug}
+                            />
+                        ))
+                ) : (
+                    <Empty props="No projects yet" />
+                )
+            }
+        </div>
+        <a
+            href="/projects"
+            class="text-[14px] sm:text-100 font-semibold mt-5 hover:opacity-50"
+            >See More...</a
+        >
+    </section>
+
+    <section class="flex flex-col mt-16">
+        <h1 class="sm:text-300 text-200 font-bold mb-5">My Blogs</h1>
+        <div class="flex flex-col gap-5">
+            {
+                blogs.length !== 0 ? (
+                    blogs
+                        .sort((a, b) => {
+                            return (
+                                new Date(b.data.publishDate).getTime() -
+                                new Date(a.data.publishDate).getTime()
+                            );
+                        })
+                        .slice(0, 2)
+                        .map((article) => (
+                            <BlogCard {...article.data} slug={article.slug} />
+                        ))
+                ) : (
+                    <Empty props="No posts yet" />
+                )
+            }
+        </div>
+        <a
+            href="/blog"
+            class="text-[14px] sm:text-100 font-semibold mt-5 hover:opacity-50"
+            >See More...</a
+        >
+    </section>
 </Layout>

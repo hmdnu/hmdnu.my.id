@@ -1,0 +1,56 @@
+---
+import type { WorkExperience } from "@/types/workExperience";
+
+type Props = {
+    workExperience: WorkExperience;
+};
+
+const { workExperience } = Astro.props;
+---
+
+<div class="flex sm:flex-row flex-col gap-1.5 justify-between">
+    <h1 class="text-200 font-bold">{workExperience.company}</h1>
+    <h2 class="font-semibold">
+        {
+            workExperience.period[0].toLocaleDateString("en-GB", {
+                month: "short",
+                year: "numeric",
+            })
+        }
+        -
+        {
+            workExperience.period[1]
+                ? workExperience.period[1]?.toLocaleDateString("en-GB", {
+                      month: "short",
+                      year: "numeric",
+                  })
+                : "Present"
+        }
+    </h2>
+</div>
+
+<span
+    class="text-[14px] bg-primary dark:bg-white dark:text-primary rounded-md text-white font-semibold px-2 py-1 w-fit h-fit -mt-2.5"
+>
+    {workExperience.type}</span
+>
+
+<div>
+    <h1 class="font-bold text-200 mb-2.5">Responsibilites</h1>
+    <ul class="flex flex-col gap-1.5 list-disc">
+        {workExperience.details.map((detail) => <li>{detail}</li>)}
+    </ul>
+</div>
+
+<div>
+    <h1 class="font-bold text-200 mb-2.5">Technologies used</h1>
+    <div class="flex flex-wrap gap-1.5">
+        {
+            workExperience.tech.map((tech) => (
+                <span class="text-[14px] bg-primary dark:bg-white dark:text-primary rounded-md text-white font-semibold px-2 py-1 w-fit h-fit">
+                    {tech}
+                </span>
+            ))
+        }
+    </div>
+</div>
