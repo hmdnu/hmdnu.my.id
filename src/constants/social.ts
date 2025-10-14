@@ -7,6 +7,13 @@ export const social = [
     url: "mailto:hamdanubaidillah0306@gmail.com",
   },
   {
+    name: "cv",
+    icon: icon.cv,
+    url: import.meta.env.DEV
+      ? "http://localhost:4321/assets/cv.pdf"
+      : "https://hmdnu.my.id/assets/cv.pdf",
+  },
+  {
     name: "github",
     icon: icon.github,
     url: "https://github.com/hmdnu",

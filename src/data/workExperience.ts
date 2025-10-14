@@ -2,6 +2,29 @@ import type { WorkExperience } from "@/types/workExperience";
 
 export const workExperiences: WorkExperience[] = [
   {
+    company: "Poltekkes Kemenkes Yogyakarta",
+    details: [
+      "Developing Full Stack Web App for managing Lab system using React and React Router.",
+      "Implemented UI design into functioning Web component.",
+      "Integrating Cloud Database with Supabase and Postgresql.",
+      "Designing Database schema with Drizzle ORM.",
+      "Implementing Session based authentication and authorization.",
+    ],
+    period: [new Date(2025, 10), null],
+    tech: [
+      "Typescript",
+      "React.js",
+      "React Router",
+      "React Hook Form",
+      "Tailwindcss",
+      "Shadcn",
+      "Supabase",
+      "Postgres",
+      "Drizzle",
+    ],
+    type: "Freelance",
+  },
+  {
     company: "CLEDS | Shoes Cleaning and Service",
     details: [
       "Developed a Fullstack web application for shoe cleaning orders, sales tracking, cluster & workshop management, and employee management.",

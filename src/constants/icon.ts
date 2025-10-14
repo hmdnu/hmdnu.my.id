@@ -20,6 +20,7 @@ export const icon = {
   menu: "icon-[ep--menu]",
   theme: "icon-[fluent--dark-theme-24-regular]",
   facebook: "icon-[ic--baseline-facebook]",
+  cv: "icon-[academicons--cv-square]",
 } as const;
 
 export const iconKeys = Object.keys(icon) as Array<keyof typeof icon>;
