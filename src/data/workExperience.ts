@@ -10,7 +10,7 @@ export const workExperiences: WorkExperience[] = [
       "Designing Database schema with Drizzle ORM.",
       "Implementing Session based authentication and authorization.",
     ],
-    period: [new Date(2025, 10), null],
+    period: [new Date(2025, 10), new Date(2025, 11)],
     tech: [
       "Typescript",
       "React.js",
