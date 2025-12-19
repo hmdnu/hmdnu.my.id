@@ -4,11 +4,11 @@ export const workExperiences: WorkExperience[] = [
   {
     company: "Poltekkes Kemenkes Yogyakarta",
     details: [
-      "Developing Full Stack Web App for managing Lab system using React and React Router.",
+      "Developed Full Stack Web App for managing Lab system using React and React Router.",
       "Implemented UI design into functioning Web component.",
-      "Integrating Cloud Database with Supabase and Postgresql.",
-      "Designing Database schema with Drizzle ORM.",
-      "Implementing Session based authentication and authorization.",
+      "Integrated Cloud Database with Supabase and Postgresql.",
+      "Designed Database schema with Drizzle ORM.",
+      "Implemented Session based authentication and authorization.",
     ],
     period: [new Date(2025, 9), new Date(2025, 10)],
     tech: [
