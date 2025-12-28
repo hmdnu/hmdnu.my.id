@@ -37,7 +37,7 @@
         aria-label="theme"
         onclick={() => (dropdown = !dropdown)}
     >
-        <span class={`${icon.theme} size-6 pointer-events-none`}>asd</span>
+        <span class={`${icon.theme} size-6 pointer-events-none`}></span>
     </button>
     {#if dropdown}
         <div
