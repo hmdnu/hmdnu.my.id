@@ -6,73 +6,73 @@ import { Image } from "astro:assets";
 ---
 
 <Layout
-  seo={{
-    title: "About",
-    description: "get to know of me",
-  }}
+    seo={{
+        title: "About",
+        description: "get to know of me",
+    }}
 >
-  <section>
-    <h1 class="sm:text-400 text-300 font-bold mb-2.5">About me</h1>
-    <p class="opacity-60 sm:text-100 text-[14px]">
-      I'm a Software Developer based in Indonesia who mostly works with <b
-        >Typescript, Go, and PHP,</b
-      > beside doing web I learn about low level stuffs. I can talk about technical
-      stuffs, anime, games, and other nerdy stuffs, I'm currently a student on State
-      Polytechnic of Malang, feel free to reach me out.
-    </p>
-  </section>
-  <section class="mt-20">
-    <h1 class="sm:text-300 text-200 font-bold mb-8">Education</h1>
-    <div class="flex flex-col gap-5">
-      {
-        educations.map((education) => (
-          <div class="flex gap-5">
-            <Image
-              src={education.logo}
-              width={1}
-              height={1}
-              alt={education.institution}
-              class="size-[50px]"
-              loading="lazy"
-            />
-            <div>
-              <h1 class="sm:text-200 text-150 font-semibold">
-                {education.title}
-              </h1>
-              <p class="font-medium opacity-60 sm:text-100 text-[14px]">
-                {education.institution} | {education.date}
-              </p>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </section>
-  <section class="mt-14">
-    <h1 class="sm:text-300 text-200 font-bold mb-8">Organization</h1>
-    <div class="flex flex-col gap-5">
-      {
-        organizations.map((organization) => (
-          <div class="flex gap-5">
-            <Image
-              src={organization.logo}
-              width={1}
-              height={1}
-              alt={organization.name}
-              class="size-[50px]"
-              loading="lazy"
-            />
-            <div>
-              <h1 class="sm:text-200 text-150 font-semibold">
-                {organization.position}
-              </h1>
-              <p class="font-medium sm:text-100 text-[14px] opacity-60">
-                {organization.name} | {organization.date}
-              </p>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </section>
+    <section>
+        <h1 class="sm:text-400 text-300 font-bold mb-2.5">About me</h1>
+        <p class="opacity-60 sm:text-100 text-[14px]">
+            I'm a fullstack software developer based in Indonesia who mostly
+            works within <b>Typescript</b> ecosystem and <b>Laravel</b> beside doing
+            web I learn about low level stuffs. I can talk about technical stuffs,
+            anime, games, and other nerdy stuffs, I'm currently a student on State
+            Polytechnic of Malang, feel free to reach me out.
+        </p>
+    </section>
+    <section class="mt-20">
+        <h1 class="sm:text-300 text-200 font-bold mb-8">Education</h1>
+        <div class="flex flex-col gap-5">
+            {
+                educations.map((education) => (
+                    <div class="flex gap-5">
+                        <Image
+                            src={education.logo}
+                            width={1}
+                            height={1}
+                            alt={education.institution}
+                            class="size-[50px]"
+                            loading="lazy"
+                        />
+                        <div>
+                            <h1 class="sm:text-200 text-150 font-semibold">
+                                {education.title}
+                            </h1>
+                            <p class="font-medium opacity-60 sm:text-100 text-[14px]">
+                                {education.institution} | {education.date}
+                            </p>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+    <section class="mt-14">
+        <h1 class="sm:text-300 text-200 font-bold mb-8">Organization</h1>
+        <div class="flex flex-col gap-5">
+            {
+                organizations.map((organization) => (
+                    <div class="flex gap-5">
+                        <Image
+                            src={organization.logo}
+                            width={1}
+                            height={1}
+                            alt={organization.name}
+                            class="size-[50px]"
+                            loading="lazy"
+                        />
+                        <div>
+                            <h1 class="sm:text-200 text-150 font-semibold">
+                                {organization.position}
+                            </h1>
+                            <p class="font-medium sm:text-100 text-[14px] opacity-60">
+                                {organization.name} | {organization.date}
+                            </p>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
 </Layout>
