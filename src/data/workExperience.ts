@@ -2,6 +2,26 @@ import type { WorkExperience } from "@/types/workExperience";
 
 export const workExperiences: WorkExperience[] = [
   {
+    company: "PT. Intelix Global Crossing",
+    details: [
+      "Working on a backend microservice module for an omnichannel CRM platform (v5) handling chat, channel configuration, and ticketing features",
+      "Building chat interaction functionality to support communication between agents and customers",
+      "Implementing channel configuration to manage multiple communication channels within the platform",
+      "Developing a ticketing module to help track and manage customer support requests",
+      "Fixing and debugging frontend issues on CRM v5 to keep the platform running smoothly",
+    ],
+    period: [new Date(2026, 0), null],
+    tech: [
+      "Typescript",
+      "Nest.js",
+      "React.js",
+      "Tailwindcss",
+      "Sequelize",
+      "Postgres"
+    ],
+    type: "Internship"
+  },
+  {
     company: "Poltekkes Kemenkes Yogyakarta",
     details: [
       "Developed Full Stack Web App for managing Lab system using React and React Router.",
